@@ -1,31 +1,13 @@
 FROM ubuntu:20.04
 
-ENV LANG=jp_JP
-ENV LANGUAGE=en_US.UTF-8
-ENV LC_ALL=en_US.UTF-8
-ENV TZ=Asia/Tokyo
+WORKDIR /tmp
 
-RUN apt update \
-  && apt upgrade -y \
-  && apt install -y \
-  autoconf -y \
-  build-essential \
-  curl \
-  git \
-  unzip \
-  wget \
-  sudo \
-  zsh \
-  && apt clean
+# セットアップ
+ADD docker_setup_debian.sh docker_setup_debian.sh
+RUN bash docker_setup_debian.sh
+ENV LANG=en_US.UTF-8
 
-# rootのパスワードを設定
-RUN echo "root:root" | chpasswd
-
-# ユーザーを作成
-ARG username=doboriakira
-RUN useradd -m "${username}" && \
-  echo "${username}:${username}" | chpasswd && \
-  echo "%${username}    ALL=(ALL)   NOPASSWD:    ALL" > /etc/sudoers.d/${username} && \
-  chmod 0440 /etc/sudoers.d/${username}
+# シェルの設定
+# RUN curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/install_non_git.sh | bash -s
 
 CMD ["zsh"]

@@ -5,13 +5,16 @@ set -eu
 touch $DOTPATH/.zsh/.zsh__temporary.zsh
 
 # brewのインストール
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-if test -e /etc/os-release ; then
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $DOTPATH/.zsh/.zsh__temporary.zsh
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-else
+if type "brew" > /dev/null 2>&1; then
   : # do nothing
+else
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  if test -e /etc/os-release ; then
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $DOTPATH/.zsh/.zsh__temporary.zsh
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  else
+    : # do nothing
+  fi
 fi
 
 # brewの基本設定としてman8に書き込み権限を付与

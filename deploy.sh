@@ -14,4 +14,8 @@ do
     echo $f
     ln -snfv ${DOTPATH}/${f} ${HOME}/${f}
 done
+
+# 設定ファイルを読み込む
+source ${HOME}/.zshrc
+
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)

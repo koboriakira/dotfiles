@@ -8,6 +8,7 @@ brew install \
   gh \
   git \
   jq \
+  neovim \
   procs \
   ripgrep \
   wget \

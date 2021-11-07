@@ -31,4 +31,7 @@ bash ${DOTPATH}/initialize.sh
 # デプロイ
 bash ${DOTPATH}/deploy.sh
 
+# 環境変数を書き込み
+echo "export DOTPATH=${DOTPATH}" >> ~/.zsh/.zsh__temporary.zsh
+
 cd $CURRENT_DIRECTORY

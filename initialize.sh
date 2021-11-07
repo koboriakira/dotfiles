@@ -1,5 +1,4 @@
 #!/bin/bash
-set -eu
 
 # 端末依存用のrun commandを記録するためのスクリプトを作成
 touch $DOTPATH/.zsh/.zsh__temporary.zsh

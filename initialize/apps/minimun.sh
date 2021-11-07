@@ -1,5 +1,5 @@
-#!/bin/bash
-set -eu
+#!/bin/basho
+
 brew install \
   bat \
   exa \

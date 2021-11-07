@@ -1,6 +1,4 @@
 #!/bin/bash
-set -eu
-
 DOTPATH=$HOME/.dotfiles
 cd ${DOTPATH}
 

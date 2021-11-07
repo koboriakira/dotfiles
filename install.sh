@@ -1,5 +1,4 @@
 #!/bin/bash
-set -eu
 
 if type "git" > /dev/null 2>&1; then
   : # do nothing

@@ -58,6 +58,12 @@ if has "docker"; then
   alias dx='docker exec -it'
 fi
 
+# NeoVim(Vim)
+if has "nvim"; then
+  alias vi='nvim'
+  alias vim='nvim'
+fi
+
 # yarn
 if has "yarn"; then
   alias ya="yarn add"

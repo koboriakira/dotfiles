@@ -25,9 +25,11 @@ fi
 echo $(tput setaf 2)Download dotfiles complete!. ✔︎$(tput sgr0)
 
 # 初期設定、イニシャライズ
-bash initialize.sh
+bash ${DOTPATH}/initialize.sh
 
 # デプロイ
-bash deploy.sh
+bash ${DOTPATH}/deploy.sh
+
+# zshを起動
 
 cd $CURRENT_DIRECTORY

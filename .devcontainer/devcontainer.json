@@ -1,4 +1,4 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// For format deta	ils, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.202.5/containers/docker-existing-dockerfile
 {
 	"name": "Existing Dockerfile",
@@ -27,5 +27,5 @@
 		// "source=/Users/koboriakira/Private/dotfiles/zsh/.zshrc,target=/root/.zshrc,type=bind"
 	],
 	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "vscode"
+	"remoteUser": "doboriakira"
 }

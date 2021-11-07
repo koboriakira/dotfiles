@@ -30,6 +30,4 @@ bash ${DOTPATH}/initialize.sh
 # デプロイ
 bash ${DOTPATH}/deploy.sh
 
-# zshを起動
-
 cd $CURRENT_DIRECTORY

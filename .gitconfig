@@ -1,0 +1,55 @@
+[core]
+        autocrlf = false # 改行コードの自動変換をしない
+        repositoryformatversion = 0 # what?
+        filemode=false # ファイルのパーミッションを自動で設定しない
+        bare=false # what?
+        logallrefupdates=true # what?
+        symlinks=false # Git for Windowsでシンボリックリンクを利用する
+        ignorecase=false # ファイル名の大文字小文字の変更を検知するようにする
+        excludesfile=~/.gitignore_global
+[merge]
+        ff=false
+[push]
+        default = current
+[pull]
+        ff = only
+[color]
+        ui = auto
+[alias]
+        graph = log --graph --oneline --decorate
+        log1s = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+        log2s = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+        log3s = log --graph --name-status --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+        log1 = !git log1s --all
+        log2 = !git log2s --all
+        log3 = !git log3s --all
+        a = add .
+        br = branch
+        c = commit
+        cam = commit -a -m
+        cm = commit -m
+        co = checkout
+        cob = checkout -B
+        cobs = count-objects -vH
+        cp = cherry-pick
+        d = diff
+        ds = diff --staged
+        f = fetch --all
+        fp = fetch --all --tags --prune
+        gcp = gc --prune=now
+        mt = mergetool -t kdiff3
+        po = push origin
+        rh = reset --hard
+        s = status -s
+        st = status -s
+        sf = status -uno
+        sh = show HEAD
+        si = status --ignored
+[credential]
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -5,7 +5,7 @@
 環境変数DOTPATHを設定可能。デフォルトは`~/.dotfiles`
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/a-kobori/dotfiles/master/install.sh?token=AVIKQWA6NRGKEVT5BMOEVKLBQ43WO | bash -s
+curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/install.sh | bash -s
 ```
 
 gitが使えるなら、下記でもOK

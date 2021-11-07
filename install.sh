@@ -8,9 +8,8 @@ if [ -z ${DOTPATH} ]; then
   export DOTPATH=~/.dotfiles
 fi
 set -u
-
-DOT_TARBALL="https://github.com/a-kobori/dotfiles/tarball/master"
-REMOTE_URL="git@github.com:a-kobori/dotfiles.git"
+DOT_TARBALL="https://github.com/koboriakira/dotfiles/tarball/master"
+REMOTE_URL="git@github.com:koboriakira/dotfiles.git"
 
 # ディレクトリがなければダウンロード（と解凍）する
 echo "Downloading dotfiles..."

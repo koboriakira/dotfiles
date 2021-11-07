@@ -1,5 +1,4 @@
 export SHELL=zsh
-export STARSHIP_CONFIG=$HOME/.starship/starship.toml
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 # export PATH
 # export MANPATH

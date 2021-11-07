@@ -30,9 +30,9 @@ curl -L git.io/nodebrew | perl - setup
 echo $(tput setaf 2)Install nodebrew: complete!. ✔︎$(tput sgr0)
 
 # zinitのインストール
-mkdir ~/.zinit && cd $_
-git clone https://github.com/zdharma-mirror/zinit.git ~/.zinit/bin
-cd ~
+mkdir $HOME/.zinit && cd $_
+git clone https://github.com/zdharma-mirror/zinit.git $HOME/.zinit/bin
+cd $HOME
 
 # starshipのインストール
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes

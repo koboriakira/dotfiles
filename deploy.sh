@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-DOTPATH=~/.dotfiles
+DOTPATH=$HOME/.dotfiles
 cd ${DOTPATH}
 
 for f in .??*

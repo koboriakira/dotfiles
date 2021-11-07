@@ -69,7 +69,7 @@ fi
 alias fdf=cd-fzf-find
 
 # デスクトップに溜まったスクリーンショットを削除
-alias remove-screenshot='rm -f ~/Desktop/Screen*.png'
+alias remove-screenshot='rm -f ${HOME}/Desktop/Screen*.png'
 
 # 現在実行されているプロセスを確認
 alias psaux='psauxwww-fzf'

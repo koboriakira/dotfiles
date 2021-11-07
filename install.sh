@@ -5,7 +5,7 @@ CURRENT_DIRECTORY=`pwd`
 # DOTPATHの設定
 set +u
 if [ -z ${DOTPATH} ]; then
-  export DOTPATH=~/.dotfiles
+  export DOTPATH=$HOME/.dotfiles
 fi
 set -u
 DOT_TARBALL="https://github.com/koboriakira/dotfiles/tarball/main"

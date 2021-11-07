@@ -7,15 +7,15 @@ has() {
 }
 
 # 端末依存
-source ~/.zsh/.zsh__temporary.zsh
+source $HOME/.zsh/.zsh__temporary.zsh
 
 # 汎用
-source ~/.zsh/.zsh_zinit.zsh
-source ~/.zsh/.zsh_setting.zsh
-source ~/.zsh/.zsh_git.zsh
-source ~/.zsh/.zsh_alias.zsh
-source ~/.zsh/.zsh_functions.zsh
-source ~/.zsh/.zsh_keybind.zsh
+source $HOME/.zsh/.zsh_zinit.zsh
+source $HOME/.zsh/.zsh_setting.zsh
+source $HOME/.zsh/.zsh_git.zsh
+source $HOME/.zsh/.zsh_alias.zsh
+source $HOME/.zsh/.zsh_functions.zsh
+source $HOME/.zsh/.zsh_keybind.zsh
 
 # 初期化
 eval "$(starship init zsh)"

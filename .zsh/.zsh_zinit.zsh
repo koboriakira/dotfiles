@@ -4,7 +4,7 @@
 # https://qiita.com/obake_fe/items/c2edf65de684f026c59c#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E5%B1%A5%E6%AD%B4%E6%A4%9C%E7%B4%A2
 
 # 初期化
-source ~/.zinit/bin/zinit.zsh
+source $HOME/.zinit/bin/zinit.zsh
 
 # zsh-completions: コマンド補完
 zinit ice wait'0'; zinit light zsh-users/zsh-completions

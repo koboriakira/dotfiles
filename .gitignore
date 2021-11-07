@@ -1,4 +1,5 @@
 .config/iterm2/AppSupport
+.config/karabiner/automatic_backups
 .DS_Store
 
 test.sh

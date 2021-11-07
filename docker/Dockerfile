@@ -11,7 +11,7 @@ RUN apt update \
   autoconf -y \
   build-essential \
   curl \
-  # git \
+  git \
   unzip \
   wget \
   sudo \

@@ -1,4 +1,4 @@
 #!/bin/bash
 set -eu
 
-bash initialize/apps/minimun.sh
+bash ${DOTPATH}/initialize/apps/minimun.sh

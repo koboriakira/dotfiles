@@ -1,0 +1,12 @@
+set number
+set expandtab
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+set nocompatible
+set laststatus=2
+set autoindent
+set ruler
+set cursorline
+syntax on

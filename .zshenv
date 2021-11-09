@@ -1,4 +1,3 @@
-export SHELL=zsh
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 # export PATH
 # export MANPATH

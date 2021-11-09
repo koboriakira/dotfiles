@@ -36,14 +36,8 @@ __fzf-find-vi() {
 }
 zle -N __fzf-find-vi
 
-# VSCodeのRemote Containerを開くaliasを登録
-function generate-remote-container-alias() {
-  if [  $# != 1  ]; then
-    echo "ERROR: aliasのコマンドを指定してください。"
-    exit 1
-  fi
-  local FOLDER_URI=$(cat ${HOME}/Library/Application\ Support/Code/storage.json | grep vscode-remote | head -1 | awk '{print $2}' | sed -e "s/\"//g" -e "s/,//g")
-  # echo "alias ${1}=\"code --folder_uri=${FOLDER_URI}\"" >> ${HOME}/.zsh/.zsh__temporary.zsh
-  echo "Set the below alias!"
-  echo "alias ${1}=\"code --folder_uri=${FOLDER_URI}\""
+# 直近開いたVSCodeのフォルダURIを開くコマンドを生成
+function __generate-latest-vscode-folder_uri() {
+  local FOLDER_URI=$(cat ~/Library/Application\ Support/Code/storage.json | jq -r '.windowsState | .lastActiveWindow | .folder')
+  echo "code --folder-uri=${FOLDER_URI}"
 }

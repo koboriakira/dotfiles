@@ -1,6 +1,9 @@
 # シェルプロンプトの間に空行を追加します
 add_newline = true
 
+# コマンドタイムアウトを短くする
+command_timeout = 50
+
 [character]
 success_symbol = "[>](bold green)"
 error_symbol = "[x](bold red)"
@@ -48,19 +51,6 @@ symbol = " "
 
 [git_branch]
 symbol = " "
-
-[git_status]
-#Gitのステータス表示用アイコン
-conflicted = "💥"
-ahead = "🏎💨"
-behind = "😰"
-diverged = "😵"
-untracked = "🌚‍"
-stashed = "📦"
-modified = "📝"
-staged = '🔦'
-renamed = "🏷"
-deleted = "🗑"
 
 [golang]
 symbol = " "

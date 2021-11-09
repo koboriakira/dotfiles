@@ -1,4 +1,11 @@
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+# zprofでプロファイリングをしたいときはコメントアウトを外す
+# zmodload zsh/zprof && zprof
+
+PATH=$HOME/.nodebrew/current/bin:$PATH
+HISTFILE=$HOME/.zsh-history # 履歴を保存するファイル
+HISTSIZE=100000             # メモリ上に保存する履歴のサイズ
+SAVEHIST=1000000            # 上述のファイルに保存する履歴のサイズ
+HISTTIMEFORMAT="[%Y/%M/%D %H:%M:%S] " #ヒストリの一覧を読みやすい形に変更
 # export PATH
 # export MANPATH
 # # -U: keep only the first occurrence of each duplicated value

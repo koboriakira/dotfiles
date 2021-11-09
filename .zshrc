@@ -19,3 +19,8 @@ source $HOME/.zsh/.zsh_keybind.zsh
 
 # 初期化
 eval "$(starship init zsh)"
+
+# zprofでプロファイリングをしたいときはコメントアウトを外す
+# if (which zprof > /dev/null 2>&1) ;then
+#   zprof | less
+# fi

@@ -34,3 +34,8 @@ cd $HOME
 
 # starshipのインストール
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
+
+# スクリーンショットの保存先をDownloadにする
+mkdir -p ${HOME}/Downloads/.screencapture
+defaults write com.apple.screencapture location ${HOME}/Downloads/.screencapture
+killall SystemUIServer

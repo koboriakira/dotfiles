@@ -74,8 +74,11 @@ fi
 # .zsh_functions
 alias fdf=cd-fzf-find
 
-# デスクトップに溜まったスクリーンショットを削除
-alias remove-screenshot='rm -f ${HOME}/Desktop/Screen*.png'
+# 溜まったスクリーンショットを削除
+alias remove-screencapture='rm -f ${HOME}/Downloads/.screencapture/*'
+
+# スクリーンショットを格納しているフォルダを開く
+alias open-screencapture='open ${HOME}/Downloads/.screencapture'
 
 # 現在実行されているプロセスを確認
 alias psaux='psauxwww-fzf'

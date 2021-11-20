@@ -52,6 +52,8 @@ if has "docker-compose"; then
   alias dcd='docker-compose down'
   alias dcr='docker-compose restart'
   alias dcb='docker-compose build'
+  alias dcx='docker-compose exec'
+  alias dcl='docker-compose logs'
 fi
 if has "docker"; then
   alias dp='docker ps'

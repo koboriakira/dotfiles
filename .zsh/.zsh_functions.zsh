@@ -41,3 +41,27 @@ function __generate-latest-vscode-folder_uri() {
   local FOLDER_URI=$(cat ~/Library/Application\ Support/Code/storage.json | jq -r '.windowsState | .lastActiveWindow | .folder')
   echo "code --folder-uri=${FOLDER_URI}"
 }
+
+# Dockerの初期化
+function init-docker() {
+  if [ -n "$(docker ps -aq)" ]; then
+    docker stop $(docker ps -aq) > /dev/null # コンテナを停止
+    echo $(tput setaf 2)Stop containers. ✔︎$(tput sgr0)
+    docker rm $(docker ps -aq) > /dev/null # コンテナを削除
+    echo $(tput setaf 2)Remove containers. ✔︎$(tput sgr0)
+  fi
+  docker network prune -f > /dev/null # ネットワークを削除
+  echo $(tput setaf 2)Remove networks. ✔︎$(tput sgr0)
+  if [ -n "$(docker images --filter dangling=true -qa)" ]; then
+    docker rmi -f $(docker images --filter dangling=true -qa) > /dev/null # REPOSITORYやTAGが<none>になっているイメージを削除
+    echo $(tput setaf 2)Remove images. ✔︎$(tput sgr0)
+  fi
+  if [ -n "$(docker volume ls --filter dangling=true -q)" ]; then
+    docker volume rm $(docker volume ls --filter dangling=true -q) > /dev/null # REPOSITORYやTAGが<none>になっているボリュームを削除
+    echo $(tput setaf 2)Remove volumes. ✔︎$(tput sgr0)
+  fi
+  if [ -n "$(docker images -qa)" ]; then
+    docker rmi -f $(docker images -qa) > /dev/null # イメージを削除
+  fi
+  echo $(tput setaf 2)Init docker: Complete. ✔︎$(tput sgr0)
+}

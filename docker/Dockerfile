@@ -5,9 +5,8 @@ WORKDIR /tmp
 # セットアップ
 ADD docker_setup_debian.sh docker_setup_debian.sh
 RUN bash docker_setup_debian.sh
-ENV LANG=en_US.UTF-8
 
 # シェルの設定
-# RUN curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/install_non_git.sh | bash -s
+RUN curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/install_non_git.sh | bash -s
 
 CMD ["zsh"]

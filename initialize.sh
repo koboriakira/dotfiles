@@ -26,6 +26,7 @@ echo $(tput setaf 2)Install applications: complete!. ✔︎$(tput sgr0)
 # nodebrewのインストール
 curl -L git.io/nodebrew | perl - setup
 echo $(tput setaf 2)Install nodebrew: complete!. ✔︎$(tput sgr0)
+echo "export PATH=\$HOME/.nodebrew/current/bin:\$PATH" >> $DOTPATH/.zsh/.zsh__temporary.zsh
 
 # zinitのインストール
 mkdir ${HOME}/.zinit && cd $_

@@ -36,11 +36,9 @@ cd $HOME
 # starshipのインストール
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
-# 【Mac】スクリーンショットの保存先をDownloadにする
+# Mac向けの初期設定を実行
 if test -e /etc/os-release ; then
   :
 else
-  mkdir -p ${HOME}/Downloads/.screencapture
-  defaults write com.apple.screencapture location ${HOME}/Downloads/.screencapture
-  killall SystemUIServer
+  curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/initialize/initialize_mac.sh | bash -s
 fi

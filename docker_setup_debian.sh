@@ -18,7 +18,7 @@ echo "root:root" | chpasswd
 
 # ユーザーを作成
 username=doboriakira
-RUN useradd -m "${username}" && \
+useradd -m "${username}" && \
   echo "${username}:${username}" | chpasswd && \
   echo "%${username}    ALL=(ALL)   NOPASSWD:    ALL" > /etc/sudoers.d/${username} && \
   chmod 0440 /etc/sudoers.d/${username}

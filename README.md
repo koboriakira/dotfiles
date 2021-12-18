@@ -11,14 +11,28 @@ curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/install.s
 gitが使えるなら、下記でもOK
 
 ```shell
-git clone git@github.com:a-kobori/dotfiles.git && bash dotfiles/install.sh && cd .. && rm -fr dotfiles
+git clone git@github.com:a-koboriakira/dotfiles.git && bash dotfiles/install.sh && cd .. && rm -fr dotfiles
 ```
 
-# 工程の概要
+## Docker環境のセットアップ
+
+### Debian
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/docker_setup_debian.sh | bash -s
+```
+
+### Redhat
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/docker_setup_redhat.sh | bash -s
+```
+
+## 工程の概要
 
 - brewをインストール
   - Linuxでもlinuxbrewとして利用できるようなのでこれを採用
   - もしかしたら各OSごとに書き分けるかも
 - アプリをインストール
   - 詳細は後述のbrew, brew caskを参照
-  - そのほかzinit, starshipも入れている
+  - そのほかzinit, starship, vim-plugも入れている

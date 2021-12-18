@@ -33,6 +33,10 @@ mkdir ${HOME}/.zinit && cd $_
 git clone https://github.com/zdharma-mirror/zinit.git ${HOME}/.zinit/bin
 cd $HOME
 
+# vim-plugをインストール
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 # starshipのインストール
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 

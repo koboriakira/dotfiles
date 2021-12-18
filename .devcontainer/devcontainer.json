@@ -27,9 +27,10 @@
 	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
 	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
 	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
-	"workspaceFolder": "/workspaces/.dotfiles",
+	"workspaceFolder": "/root/.dotfiles",
 	"mounts": [
-		// "source=/Users/koboriakira/Private/dotfiles/zsh/.zshrc,target=/root/.zshrc,type=bind"
+		// "source=~/.dotfiles/.zsh,target=/root/.zsh,type=bind",
+		// "source=~/.dotfiles/.config,target=/root/.config,type=bind"
 	],
 	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "doboriakira"

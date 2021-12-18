@@ -1,3 +1,5 @@
+# docker build -t dotfiles docker
+# docker build --no-chace -t dotfiles docker
 FROM ubuntu:20.04
 
 WORKDIR /tmp

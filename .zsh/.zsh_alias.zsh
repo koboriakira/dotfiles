@@ -73,6 +73,13 @@ if has "yarn"; then
   alias yd="yarn && yarn dev"
 fi
 
+# tar
+alias tar-compress="tar cvzf"
+alias tar-decompress="tar xvzf"
+
+# curl
+alias getmyip="curl inet-ip.info"
+
 # .zsh_functions
 alias fdf=cd-fzf-find
 

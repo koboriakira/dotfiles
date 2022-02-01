@@ -65,3 +65,7 @@ function init-docker() {
   fi
   echo $(tput setaf 2)Init docker: Complete. ✔︎$(tput sgr0)
 }
+
+function find-includes-string() {
+  find . -type f -print | xargs grep $0
+}

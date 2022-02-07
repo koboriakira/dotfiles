@@ -1,4 +1,7 @@
 .config/configstore
+.config/yarn
+.config/flutter
+.config/gatsby
 .config/gh/hosts.yml
 .config/iterm2/AppSupport
 .config/karabiner/automatic_backups

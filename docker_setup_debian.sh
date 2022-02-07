@@ -17,7 +17,7 @@ apt update \
 echo "root:root" | chpasswd
 
 # ユーザーを作成
-username=doboriakira
+username=dockeruser
 useradd -m "${username}" && \
   echo "${username}:${username}" | chpasswd && \
   echo "%${username}    ALL=(ALL)   NOPASSWD:    ALL" > /etc/sudoers.d/${username} && \

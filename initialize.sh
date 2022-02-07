@@ -7,7 +7,7 @@ touch $DOTPATH/.zsh/.zsh__temporary.zsh
 if type "brew" > /dev/null 2>&1; then
   : # do nothing
 else
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   if test -e /etc/os-release ; then
     # Linuxのときはlinuxbrewのevalを設定
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $DOTPATH/.zsh/.zsh__temporary.zsh

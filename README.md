@@ -36,3 +36,7 @@ curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/docker_se
 - アプリをインストール
   - 詳細は後述のbrew, brew caskを参照
   - そのほかzinit, starship, vim-plugも入れている
+
+## 参照
+
+- [VSCode NeoVim拡張　使うまでに詰まったところ](https://zenn.dev/bun913/articles/02785aed0ba50e)

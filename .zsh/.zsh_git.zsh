@@ -87,3 +87,9 @@ gitconfig-user-private() {
   git config user.name "Kobori Akira"
   git config user.email "private.beats@gmail.com"
 }
+
+# Issueを作成する
+create-issue() {
+  result=`gh issue create --title "$1" --body "Writing..." --assignee "@me"`
+  chrome open ${result}
+}

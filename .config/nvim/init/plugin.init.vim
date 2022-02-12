@@ -7,5 +7,9 @@ call plug#begin('~/.vim/plugged')
 " coc.nvimを導入するとVimからVSCodeの機能の大半が使えるようになります。
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" DartおよびFlutterのプラグイン
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
+
 " Initialize plugin system
 call plug#end()

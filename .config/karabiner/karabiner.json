@@ -81,18 +81,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_command",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "japanese_kana"
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "right_command"
+                                        "key_code": "japanese_kana",
+                                        "lazy": false
                                     }
                                 ],
                                 "type": "basic"

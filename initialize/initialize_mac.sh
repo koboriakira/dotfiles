@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo mdutil -a -i off # Spotlight検索をオフ
+
 # Dock
 defaults write com.apple.dock persistent-apps -array # Dock に標準で入っている全てのアプリを消す
 defaults write com.apple.dock autohide -bool true # Dockを自動的に隠す

@@ -69,3 +69,8 @@ function init-docker() {
 function find-includes-string() {
   find . -type f -print | xargs grep $0
 }
+
+function empty-trash() {
+  find ~/Downloads/* -exec rm -r {} \;
+}
+

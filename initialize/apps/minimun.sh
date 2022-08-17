@@ -9,6 +9,7 @@ brew install \
   git \
   jq \
   neovim \
+  openssl \
   procs \
   ripgrep \
   wget \

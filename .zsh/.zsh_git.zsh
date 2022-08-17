@@ -73,23 +73,34 @@ checkout-fzf-gitbranch() {
 }
 zle -N checkout-fzf-gitbranch
 
-# Issueを作成して、ブランチを切り替え
-create-issue() {
-  echo 'Issue Title: ' && read issuetitle
-  echo 'Issue Body: ' && read issuebody
-  echo 'Label: ' && read label
-  echo 'Branch name: ' && read branchname
-  issuenumber=`gh issue create --title "$issuetitle" --body "$issuebody" --label "$label" | tail -1 | cut -d / -f7`
-  git co -b "$issuenumber.$branchname"
-}
-
 gitconfig-user-private() {
   git config user.name "Kobori Akira"
   git config user.email "private.beats@gmail.com"
 }
 
 # Issueを作成する
-create-issue() {
-  result=`gh issue create --title "$1" --body "Writing..." --assignee "@me"`
-  chrome open ${result}
+# 第1引数：ブランチ名
+# 第2引数：イシューのタイトル
+openissue() {
+    branchname=`echo $1 | tr A-Z a-z | sed -e 's/ /-/g'`
+    issuenumber=`gh issue create --title $2 --body "" | tail -1 | cut -d / -f7`
+    git checkout -b "$branchname#$issuenumber"
+}
+
+# 現在開いているブランチのPRを作成する
+# 第1引数：PRのタイトル
+pullrequest() {
+    branch=`git branch --show-current`
+    issuenumber=`echo $branch | cut -d# -f2`
+    url=`gh pr create --title "$1" --body "Close #$issuenumber"`
+    chrome-cli open $url
+}
+
+# 現在開いているブランチを、ローカル、リモートそれぞれ削除する
+closebranch() {
+    currentbranch=`git branch --show-current`
+    git checkout master
+    git pull origin master
+    git push --delete origin $currentbranch
+    git branch -d $currentbranch
 }

@@ -13,9 +13,7 @@ else
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $DOTPATH/.zsh/.zsh__temporary.zsh
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   else
-    # Macのときは、brewの基本設定としてman8に書き込み権限を付与
-    chown -R $(whoami) /usr/local/share/man/man1 && chmod u+w /usr/local/share/man/man1
-    echo $(tput setaf 2)Install brew: complete!. ✔︎$(tput sgr0)
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $DOTPATH/.zsh/.zsh__temporary.zsh
   fi
 fi
 

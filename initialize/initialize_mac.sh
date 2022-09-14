@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo mdutil -a -i off # Spotlight検索をオフ
+# sudo mdutil -a -i off # Spotlight検索をオフ
 
 # Dock
 defaults write com.apple.dock persistent-apps -array # Dock に標準で入っている全てのアプリを消す

@@ -20,7 +20,6 @@ brew install \
 brew install --cask \
   alfred \
   android-studio \
-  clipy \
   docker \
   google-japanese-ime \
   iterm2 \

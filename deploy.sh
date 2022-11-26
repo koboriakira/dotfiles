@@ -4,6 +4,8 @@ cd ${DOTPATH}
 
 for f in .??*
 do
+    # ドットから始まるディレクトリのうち、
+    # .config, .ssh, .zshをシンボリックリンク対象にする
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".gitignore" ]] && continue
     [[ "$f" == ".devcontainer" ]] && continue

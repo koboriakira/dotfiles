@@ -42,5 +42,6 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 if test -e /etc/os-release ; then
   :
 else
+  curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/initialize/configure_ssh.sh | bash -s
   curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/initialize/initialize_mac.sh | bash -s
 fi

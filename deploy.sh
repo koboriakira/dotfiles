@@ -5,14 +5,18 @@ cd ${DOTPATH}
 for f in .??*
 do
     # ドットから始まるディレクトリのうち、
-    # .config, .ssh, .zshをシンボリックリンク対象にする
+    # .config, .zshをシンボリックリンク対象にする
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".gitignore" ]] && continue
     [[ "$f" == ".devcontainer" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
+    [[ "$f" == ".ssh" ]] && continue
 
     echo $f
     ln -snfv ${DOTPATH}/${f} ${HOME}/${f}
 done
+
+# .ssh/privateのみシンボリックリンクを貼る
+ln -snfv ${DOTPATH}/.ssh/private ${HOME}/.ssh/private
 
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)

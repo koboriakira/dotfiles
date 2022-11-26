@@ -2,5 +2,5 @@
 if grep -q private-github ~/.ssh/config; then
   : # do nothing
 else
-  echo private-github.conf >> ~/.ssh/config
+  echo private/private-github.conf >> ~/.ssh/config
 fi

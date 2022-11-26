@@ -8,6 +8,7 @@ brew install \
   docker \
   findutils \
   gawk \
+  git-secrets \
   gnu-sed \
   gnu-tar \
   graphviz \
@@ -30,3 +31,8 @@ brew install --cask \
   sequel-ace \
   session-manager-plugin \
   visual-studio-code
+
+# git-secretsの設定をグローバルに入れる
+git secrets --register-aws --global
+git secrets --install ~/.git-templates/git-secrets
+git config --global init.templatedir '~/.git-templates/git-secrets'

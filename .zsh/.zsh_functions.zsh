@@ -74,3 +74,10 @@ function empty-trash() {
   find ~/Downloads/* -exec rm -r {} \;
 }
 
+function terraform_function() {
+  if [ -n "$AWS_ACCESS_KEY_ID" ] && [ -n "$AWS_SECRET_ACCESS_KEY" ] && [ -n "$AWS_DEFAULT_REGION" ]; then
+    docker run --platform linux/amd64 -it --rm -v $PWD:/work -w /work -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" -e "AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION" hashicorp/terraform:latest ${@:1}
+  else
+    echo "AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGIONのいずれかが未設定"
+  fi
+}

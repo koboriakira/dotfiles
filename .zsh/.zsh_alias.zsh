@@ -99,3 +99,6 @@ alias pskill='ps-kill-fzf'
 alias doc.new='chrome open https://doc.new'
 alias sheet.new='chrome open https://sheet.new'
 alias meet.new='chrome open https://meet.new'
+
+# Terraform
+alias terraform='terraform_function' # 詳細は.zsh_functionsに記載

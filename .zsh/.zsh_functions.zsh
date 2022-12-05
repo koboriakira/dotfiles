@@ -48,9 +48,10 @@ function init-docker() {
     docker stop $(docker ps -aq) > /dev/null # コンテナを停止
     echo $(tput setaf 2)Stop containers. ✔︎$(tput sgr0)
     docker rm $(docker ps -aq) > /dev/null # コンテナを削除
+    docker container prune --force > /dev/null
     echo $(tput setaf 2)Remove containers. ✔︎$(tput sgr0)
   fi
-  docker network prune -f > /dev/null # ネットワークを削除
+  docker network prune --force > /dev/null # ネットワークを削除
   echo $(tput setaf 2)Remove networks. ✔︎$(tput sgr0)
   if [ -n "$(docker images --filter dangling=true -qa)" ]; then
     docker rmi -f $(docker images --filter dangling=true -qa) > /dev/null # REPOSITORYやTAGが<none>になっているイメージを削除
@@ -62,6 +63,10 @@ function init-docker() {
   fi
   if [ -n "$(docker images -qa)" ]; then
     docker rmi -f $(docker images -qa) > /dev/null # イメージを削除
+    docker image prune --force > /dev/null
+  fi
+  if [ -n "$(docker volume ls -q)" ]; then
+    docker volume prune --force > /dev/null # ボリュームを削除
   fi
   echo $(tput setaf 2)Init docker: Complete. ✔︎$(tput sgr0)
 }

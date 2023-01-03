@@ -68,6 +68,7 @@ function init-docker() {
   if [ -n "$(docker volume ls -q)" ]; then
     docker volume prune --force > /dev/null # ボリュームを削除
   fi
+  docker builder prune --force > /dev/null # イメージのビルド用キャッシュも削除
   echo $(tput setaf 2)Init docker: Complete. ✔︎$(tput sgr0)
 }
 
@@ -85,4 +86,24 @@ function terraform_function() {
   else
     echo "AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGIONのいずれかが未設定"
   fi
+}
+
+function new-blog() {
+  #!/bin/bash
+  local BLOG_DIR="${HOME}/git/blog/"
+
+  # ファイルパスを生成
+  local FILEPATH="content/`date +'%Y/%m/%d'`.md"
+
+  # ファイルを作成
+  mkdir -p "$(dirname "${BLOG_DIR}${FILEPATH}")" && touch ${BLOG_DIR}${FILEPATH}
+
+  # テンプレートを作成
+  cat - << EOS >> ${BLOG_DIR}${FILEPATH}
+---
+title: 
+date: `date +'%Y-%m-%d'`
+tags: ["Diary"]
+---
+EOS
 }

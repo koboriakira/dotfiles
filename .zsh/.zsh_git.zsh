@@ -104,3 +104,8 @@ closebranch() {
     git push --delete origin $currentbranch
     git branch -d $currentbranch
 }
+
+# masterにマージ済のブランチを削除
+removeMergedBranch() {
+  git branch --merged | egrep -v "master" | xargs git branch -d
+}

@@ -21,10 +21,11 @@ fi
 bash ${DOTPATH}/initialize/apps/install.sh
 echo $(tput setaf 2)Install applications: complete!. ✔︎$(tput sgr0)
 
-# nodebrewのインストール
-curl -L git.io/nodebrew | perl - setup
-echo $(tput setaf 2)Install nodebrew: complete!. ✔︎$(tput sgr0)
-echo "export PATH=\$HOME/.nodebrew/current/bin:\$PATH" >> $DOTPATH/.zsh/.zsh__temporary.zsh
+# Voltaのインストール
+curl https://get.volta.sh | bash
+echo "export VOLTA_HOME=\$HOME/.volta" >> $DOTPATH/.zsh/.zsh__temporary.zsh
+echo "export PATH=\$VOLTA_HOME/bin:\$PATH" >> $DOTPATH/.zsh/.zsh__temporary.zsh
+echo $(tput setaf 2)Install Volta: complete!. ✔︎$(tput sgr0)
 
 # zinitのインストール
 mkdir ${HOME}/.zinit && cd $_

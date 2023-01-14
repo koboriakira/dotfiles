@@ -1,7 +1,6 @@
 # zprofでプロファイリングをしたいときはコメントアウトを外す
 # zmodload zsh/zprof && zprof
 
-PATH=$HOME/.nodebrew/current/bin:$PATH
 HISTFILE=$HOME/.zsh-history # 履歴を保存するファイル
 HISTSIZE=100000             # メモリ上に保存する履歴のサイズ
 SAVEHIST=1000000            # 上述のファイルに保存する履歴のサイズ

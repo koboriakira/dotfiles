@@ -42,3 +42,4 @@ HISTTIMEFORMAT="[%Y/%M/%D %H:%M:%S] " #ヒストリの一覧を読みやすい�
 #     /usr/local/opt/grep/libexec/gnuman(N-/) # grep
 #     ${manpath}
 # )
+. "$HOME/.cargo/env"

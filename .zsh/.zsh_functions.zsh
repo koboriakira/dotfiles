@@ -106,4 +106,7 @@ date: `date +'%Y-%m-%d'`
 tags: ["Diary"]
 ---
 EOS
+
+  # VSCodeで開く
+  code ${BLOG_DIR}${FILEPATH}
 }

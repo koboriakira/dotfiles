@@ -102,3 +102,6 @@ alias meet.new='chrome open https://meet.new'
 
 # Terraform
 alias terraform='terraform_function' # 詳細は.zsh_functionsに記載
+alias tfp='terraform_function fmt . && terraform_function plan -parallelism=30'
+alias tfa='terraform_function fmt . && terraform_function apply -parallelism=30 --auto-approve'
+alias tfm='terraform_function fmt'

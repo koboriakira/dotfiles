@@ -107,3 +107,7 @@ alias tfp='terraform_function fmt . && terraform_function plan -parallelism=30'
 alias tfa='terraform_function fmt . && terraform_function apply -parallelism=30 --auto-approve'
 alias tfm='terraform_function fmt'
 alias tfi='terraform_function init'
+
+# Python
+alias python='python3.11'
+alias pip='pip3.11'

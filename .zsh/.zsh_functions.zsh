@@ -101,7 +101,7 @@ function new-blog() {
   # テンプレートを作成
   cat - << EOS >> ${BLOG_DIR}${FILEPATH}
 ---
-title: 
+title:
 date: `date +'%Y-%m-%d'`
 tags: ["Diary"]
 ---
@@ -109,4 +109,9 @@ EOS
 
   # VSCodeで開く
   code ${BLOG_DIR}${FILEPATH}
+}
+
+# ローカルの.envファイルを読み込む
+function export-dotenv() {
+  export $(cat .env| grep -v "#" | xargs)
 }

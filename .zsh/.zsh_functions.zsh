@@ -108,7 +108,7 @@ tags: ["Diary"]
 EOS
 
   # VSCodeで開く
-  code ${BLOG_DIR}${FILEPATH}
+  code ${BLOG_DIR}
 }
 
 # ローカルの.envファイルを読み込む

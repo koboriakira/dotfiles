@@ -7,6 +7,7 @@ brew install \
   diffutils \
   docker \
   findutils \
+  ffmpeg \
   gawk \
   git-secrets \
   gnu-sed \

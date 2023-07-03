@@ -117,7 +117,7 @@ function export-dotenv() {
 }
 
 # python/whisper.pyを実行する
-function whisper() {
+function openai-whisper() {
   if [ $# -ne 1 ]; then
     echo "Usage: whisper <file_path>"
     return 1

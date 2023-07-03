@@ -115,3 +115,17 @@ EOS
 function export-dotenv() {
   export $(cat .env| grep -v "#" | xargs)
 }
+
+# python/whisper.pyを実行する
+function whisper() {
+  if [ $# -ne 1 ]; then
+    echo "Usage: whisper <file_path>"
+    return 1
+  fi
+
+  # 絶対パスの取得
+  abs_path=$(readlink -f $1)
+
+  # Pythonスクリプトの実行
+  python3 ~/.dotfiles/python/whisper.py $abs_path
+}

@@ -103,12 +103,9 @@ function new-blog() {
 ---
 title:
 date: `date +'%Y-%m-%d'`
-tags: ["Diary"]
+tags: []
 ---
 EOS
-
-  # VSCodeで開く
-  code ${BLOG_DIR}
 }
 
 # ローカルの.envファイルを読み込む

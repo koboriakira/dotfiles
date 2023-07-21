@@ -74,6 +74,11 @@ if has "yarn"; then
   alias yd="yarn && yarn dev"
 fi
 
+# VSCode Insider
+if has "code-insiders"; then
+  alias codei='code-insiders'
+fi
+
 # tar
 alias tar-compress="tar cvzf"
 alias tar-decompress="tar xvzf"

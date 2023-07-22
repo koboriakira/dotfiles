@@ -126,3 +126,14 @@ function openai-whisper() {
   # Pythonスクリプトの実行
   python3 ~/.dotfiles/python/whisper.py $abs_path
 }
+
+# squoosh-cli-in-dockerを利用して、画像最適化をする
+function squoosh() {
+  local shell_path=${HOME}/git/squoosh-cli/main.sh
+  # shell_pathが存在するか確認
+  if [ ! -e $shell_path ]; then
+    echo "squoosh-cliリポジトリが見つかりません: $shell_path"
+    return 1
+  fi
+  zsh $shell_path $@
+}

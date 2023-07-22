@@ -8,6 +8,7 @@ brew install \
   docker \
   findutils \
   ffmpeg \
+  fswatch \
   gawk \
   git-secrets \
   gnu-sed \

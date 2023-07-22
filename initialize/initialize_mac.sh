@@ -22,6 +22,7 @@ defaults write -g NSWindowResizeTime 0.1 # ダイアログ表示やウィンド�
 chflags nohidden ~/Library # 「ライブラリ」を常に表示
 # スクリーンキャプチャ
 mkdir -p ${HOME}/Downloads/.screencapture
+defaults write com.apple.screencapture name screenshot # スクリーンキャプチャのファイル名を変更
 defaults write com.apple.screencapture location ${HOME}/Downloads/.screencapture # スクリーンキャプチャの保存先を変更
 
 # 設定

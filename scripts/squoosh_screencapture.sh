@@ -18,5 +18,5 @@ do
   newfile=$(echo $file | sed -e 's/ /_/g')
   mv "$WATCHED_DIR/$file" "$WATCHED_DIR/$newfile"
 
-  ${HOME}/git/squoosh-cli/main.sh $WATCHED_DIR/$newfile --force > /dev/null 2>&1
+  ${HOME}/git/squoosh-cli/main.sh $WATCHED_DIR`/$newfile --force > /dev/null 2>&1
 done

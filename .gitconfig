@@ -56,3 +56,5 @@
 [user]
 	name = a-kobori
 	email = 89172056+a-kobori@users.noreply.github.com
+[init]
+	defaultBranch = main

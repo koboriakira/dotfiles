@@ -1,4 +1,6 @@
-FROM ubuntu:20.04
+# docker build -t dotfiles ./docker
+# docker run -it --rm dotfiles
+FROM ubuntu:22.04
 
 # curlは入れておく
 RUN apt update \

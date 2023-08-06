@@ -10,16 +10,11 @@
 	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 	"dockerFile": "../docker/Dockerfile",
 	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.defaultProfile.linux": "zsh",
-	},
+	// "settings": {
+	// 	"terminal.integrated.defaultProfile.linux": "zsh",
+	// },
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		// Git
-		"eamodio.gitlens",
-		"github.vscode-pull-request-github",
-		"donjayamanne.githistory",
-	],
+	// "extensions": [],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
@@ -29,9 +24,8 @@
 	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
 	"workspaceFolder": "/root/.dotfiles",
 	"mounts": [
-		// "source=~/.dotfiles/.zsh,target=/root/.zsh,type=bind",
-		// "source=~/.dotfiles/.config,target=/root/.config,type=bind"
-	],
+		"source=.,target=/root/.dotfiles,type=bind"
+	]
 	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "doboriakira"
 }

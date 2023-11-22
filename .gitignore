@@ -6,6 +6,7 @@
 .config/github-copilot/hosts.json
 .config/iterm2/AppSupport
 .config/karabiner/automatic_backups
+.config/github-copilot/versions.json
 .DS_Store
 __pycache__
 

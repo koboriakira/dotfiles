@@ -19,7 +19,10 @@ brew install \
   lv \
   nektos/tap/act \
   plantuml \
-  pstree
+  pstree \
+  python \
+  pyenv \
+  pipenv
 brew install --cask \
   alfred \
   android-studio \

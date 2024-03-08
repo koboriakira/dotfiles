@@ -121,5 +121,5 @@ alias tfm='terraform_function fmt'
 alias tfi='terraform_function init'
 
 # Python
-alias python='python3.11'
-alias pip='pip3.11'
+# alias python='python3.11'
+# alias pip='pip3.11'

@@ -92,8 +92,16 @@ function new-blog() {
   #!/bin/bash
   local BLOG_DIR="${HOME}/git/blog/"
 
-  # ファイルパスを生成
-  local FILEPATH="content/`date +'%Y/%m/%d'`.md"
+  # 今日の日付をYYYY/MM/DD形式で取得してパスを作成する
+  # ただし翌日の午前2時までは前日の日付とする
+  if [ `date +'%H'` -lt 2 ]; then
+    local YESTERDAY=`date -v-1d +'%Y/%m/%d'`
+    local FILEPATH="content/${YESTERDAY}.md"
+    local DATE=`date -v-1d +'%Y-%m-%d'`
+  else
+    local FILEPATH="content/`date +'%Y/%m/%d'`.md"
+    local DATE=`date +'%Y-%m-%d'`
+  fi
 
   # ファイルを作成
   mkdir -p "$(dirname "${BLOG_DIR}${FILEPATH}")" && touch ${BLOG_DIR}${FILEPATH}
@@ -102,7 +110,7 @@ function new-blog() {
   cat - << EOS >> ${BLOG_DIR}${FILEPATH}
 ---
 title:
-date: `date +'%Y-%m-%d'`
+date: ${DATE}
 tags: []
 ---
 EOS

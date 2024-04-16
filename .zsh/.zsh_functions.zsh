@@ -114,6 +114,11 @@ date: ${DATE}
 tags: []
 ---
 EOS
+
+  # CotEditorで開く
+  if has "cot"; then
+    cot ${BLOG_DIR}${FILEPATH}
+  fi
 }
 
 # ローカルの.envファイルを読み込む

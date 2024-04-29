@@ -28,6 +28,7 @@ brew install --cask \
   android-studio \
   docker \
   google-japanese-ime \
+  hammerspoon \
   iterm2 \
   karabiner-elements \
   licecap \
@@ -35,7 +36,8 @@ brew install --cask \
   rectangle \
   sequel-ace \
   session-manager-plugin \
-  visual-studio-code
+  visual-studio-code \
+  wezterm
 
 # git-secretsの設定をグローバルに入れる
 git secrets --register-aws --global

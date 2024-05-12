@@ -150,3 +150,24 @@ function squoosh() {
   fi
   zsh $shell_path $@
 }
+
+# Slackチャンネルに投稿する
+function slack-post() {
+  if [ $# -ne 1 ]; then
+    echo "Usage: slack-post <message>"
+    return 1
+  fi
+
+  local authorization="Bearer $SLACK_BOT_TOKEN"
+  local slack_webhook_url=https://slack.com/api/chat.postMessage
+  local channel=C05F6AASERZ # diaryチャンネル
+  local message=$1
+
+  curl -sS --location 'https://slack.com/api/chat.postMessage' \
+    --header "Authorization: $authorization" \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "channel": "'$channel'",
+        "text": "'$message'"
+    }' > /dev/null
+}

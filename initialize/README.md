@@ -10,7 +10,7 @@
 | coreutils |   |
 | diffutils |   |
 | docker |   |
-| exa |  replacement for ls |
+| exa |  replacement for ls<br/>メンテ終了した |
 | fd | replacement for find  |
 | findutils |   |
 | fzf |   |

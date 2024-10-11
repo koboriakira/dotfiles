@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# google-japanese-imeを入れるために必要
+sudo softwareupdate --install-rosetta
+
 brew install \
   awscli \
   chrome-cli \
@@ -24,9 +27,11 @@ brew install \
   pyenv \
   pipenv
 brew install --cask \
+  1password \
   alfred \
   android-studio \
   docker \
+  google-chrome \
   google-japanese-ime \
   hammerspoon \
   iterm2 \
@@ -36,6 +41,8 @@ brew install --cask \
   rectangle \
   sequel-ace \
   session-manager-plugin \
+  slack \
+  swinsian \
   visual-studio-code \
   wezterm
 

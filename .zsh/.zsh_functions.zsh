@@ -95,30 +95,21 @@ function new-blog() {
   # 今日の日付をYYYY/MM/DD形式で取得してパスを作成する
   # ただし翌日の午前2時までは前日の日付とする
   if [ `date +'%H'` -lt 2 ]; then
-    local YESTERDAY=`date -v-1d +'%Y/%m/%d'`
-    local FILEPATH="content/${YESTERDAY}.md"
-    local DATE=`date -v-1d +'%Y-%m-%d'`
+    local FILEPATH="content/`date -v-1d +'%Y/%m/%d'`.md"
   else
     local FILEPATH="content/`date +'%Y/%m/%d'`.md"
-    local DATE=`date +'%Y-%m-%d'`
   fi
+
+  local BLOG_ABS_PATH="${BLOG_DIR}${FILEPATH}"
 
   # ファイルを作成
-  mkdir -p "$(dirname "${BLOG_DIR}${FILEPATH}")" && touch ${BLOG_DIR}${FILEPATH}
+  mkdir -p "$(dirname "${BLOG_ABS_PATH}")" && touch ${BLOG_ABS_PATH}
 
-  # テンプレートを作成
-  cat - << EOS >> ${BLOG_DIR}${FILEPATH}
----
-title:
-date: ${DATE}
-tags: []
----
-EOS
+  # 日記データを取得してファイルに書きこむ
+  curl --silent -X GET "$LAMBDA_SLACK_CONCIERGE_API_DOMAIN"mydiary/ | jq -r '.result.file_content' >> ${BLOG_ABS_PATH}
 
-  # CotEditorで開く
-  if has "cot"; then
-    cot ${BLOG_DIR}${FILEPATH}
-  fi
+  # VSCODEで開く
+  code ${BLOG_DIR}
 }
 
 # ローカルの.envファイルを読み込む

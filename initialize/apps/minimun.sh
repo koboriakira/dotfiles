@@ -2,7 +2,6 @@
 
 brew install \
   bat \
-  exa \
   fd \
   fzf \
   gh \

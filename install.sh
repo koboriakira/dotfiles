@@ -1,9 +1,22 @@
 #!/bin/bash
+if type "brew" > /dev/null 2>&1; then
+  : # do nothing
+else
+  echo "ERROR: 初期設定にはbrewが必要です"
+  exit 1
+fi
 
 if type "git" > /dev/null 2>&1; then
   : # do nothing
 else
   echo "ERROR: 初期設定にはgitが必要です"
+  exit 1
+fi
+
+if type "gh" > /dev/null 2>&1; then
+  : # do nothing
+else
+  echo "ERROR: 初期設定にはghが必要です"
   exit 1
 fi
 

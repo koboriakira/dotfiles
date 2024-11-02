@@ -46,19 +46,19 @@ config.keys = {
     mods = 'SHIFT|CTRL',
     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
-    -- Ctrl+左矢印でカーソルを前の単語に移動
+    -- Option+左矢印でカーソルを前の単語に移動
   {
     key = "LeftArrow",
-    mods = "CTRL",
+    mods = "OPT",
     action = act.SendKey {
       key = "b",
       mods = "META",
     },
   },
-  -- Ctrl+右矢印でカーソルを次の単語に移動
+  -- Option+右矢印でカーソルを次の単語に移動
   {
     key = "RightArrow",
-    mods = "CTRL",
+    mods = "OPT",
     action = act.SendKey {
       key = "f",
       mods = "META",

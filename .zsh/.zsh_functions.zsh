@@ -95,9 +95,9 @@ function new-blog() {
   # 今日の日付をYYYY/MM/DD形式で取得してパスを作成する
   # ただし翌日の午前2時までは前日の日付とする
   if [ `date +'%H'` -lt 2 ]; then
-    local FILEPATH="content/`date -v-1d +'%Y/%m/%d'`.md"
+    local FILEPATH="content/`date -v-1d +'%Y/%m/%d'`2.md"
   else
-    local FILEPATH="content/`date +'%Y/%m/%d'`.md"
+    local FILEPATH="content/`date +'%Y/%m/%d'2`.md"
   fi
 
   local BLOG_ABS_PATH="${BLOG_DIR}${FILEPATH}"
@@ -106,7 +106,7 @@ function new-blog() {
   mkdir -p "$(dirname "${BLOG_ABS_PATH}")" && touch ${BLOG_ABS_PATH}
 
   # 日記データを取得してファイルに書きこむ
-  curl --silent -X GET "$LAMBDA_SLACK_CONCIERGE_API_DOMAIN"mydiary/ | jq -r '.result.file_content' >> ${BLOG_ABS_PATH}
+  curl --silent -X GET "$LAMBDA_NOTION_API_DOMAIN"blog/template/ | jq -r '.message' >> ${BLOG_ABS_PATH}
 
   # VSCODEで開く
   code ${BLOG_DIR}

@@ -11,12 +11,16 @@ do
     [[ "$f" == ".devcontainer" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
     [[ "$f" == ".ssh" ]] && continue
-
     echo $f
+
+    # すでにシンボリックリンクが存在する場合は削除
+    if [ -e ${HOME}/${f} ]; then
+        rm -rf ${HOME}/${f}
+    fi
     ln -snfv ${DOTPATH}/${f} ${HOME}/${f}
 done
 
 # .ssh/privateのみシンボリックリンクを貼る
-ln -snfv ${DOTPATH}/.ssh/private ${HOME}/.ssh/private
+# ln -snfv ${DOTPATH}/.ssh/private ${HOME}/.ssh/private
 
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)

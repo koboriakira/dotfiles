@@ -123,3 +123,6 @@ alias tfi='terraform_function init'
 # Python
 # alias python='python3.11'
 # alias pip='pip3.11'
+
+# オリジナル
+alias beep='afplay /System/Library/Sounds/Blow.aiff'

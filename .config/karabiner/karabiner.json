@@ -2,26 +2,10 @@
     "profiles": [
         {
             "complex_modifications": {
+                "parameters": {
+                    "basic.simultaneous_threshold_milliseconds": 10
+                },
                 "rules": [
-                    {
-                        "description": "escキーを押したときに、英数キーも送信する（vim用）",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "escape"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "escape"
-                                    },
-                                    {
-                                        "key_code": "japanese_eisuu"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
                     {
                         "description": "右コマンドキーを単体で押したときに、かなキーを送信、左コントロールキーを単体で押したときに、英数キーを送信する。 (rev 2)",
                         "manipulators": [
@@ -69,8 +53,37 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "japanese_kana",
-                                        "lazy": false
+                                        "key_code": "right_command",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "japanese_kana"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "right_command"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "escキーを押したときに、英数キーも送信する（vim用）",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape"
+                                    },
+                                    {
+                                        "key_code": "japanese_eisuu"
                                     }
                                 ],
                                 "type": "basic"
@@ -82,21 +95,9 @@
             "devices": [
                 {
                     "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 638,
-                        "vendor_id": 1452
+                        "is_keyboard": true
                     },
                     "simple_modifications": [
-                        {
-                            "from": {
-                                "apple_vendor_top_case_key_code": "keyboard_fn"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "escape"
-                                }
-                            ]
-                        },
                         {
                             "from": {
                                 "key_code": "caps_lock"
@@ -114,16 +115,6 @@
                             "to": [
                                 {
                                     "key_code": "left_control"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_control"
-                            },
-                            "to": [
-                                {
-                                    "apple_vendor_top_case_key_code": "keyboard_fn"
                                 }
                             ]
                         }
@@ -184,7 +175,6 @@
                 }
             ],
             "virtual_hid_keyboard": {
-                "country_code": 0,
                 "keyboard_type_v2": "ansi"
             }
         }

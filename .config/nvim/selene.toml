@@ -1,0 +1,12 @@
+# Seleneとは、Luaの静的解析ツールです
+
+# Neovimの標準ライブラリを使う
+# SeleneはNeovimのグローバル変数を認識する
+std = "neovim"
+
+[rules]
+global_usage = "allow"                   # グローバル変数の使用を許可
+if_same_then_else = "allow"              # if文のthen節とelse節の中で同じ変数を使っても良い
+incorrect_standard_library_use = "allow" # 標準ライブラリの誤った使用を許可
+mixed_table = "allow"                    # テーブルの異なる型の要素を許可
+multiple_statements = "allow"            # 複数のステートメントを許可

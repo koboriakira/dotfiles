@@ -1,0 +1,7 @@
+column_width = 120                   # 1行あたりの文字数
+line_endings = "Unix"                # 改行コードをUnixスタイルにする
+indent_type = "Spaces"               # インデントをスペースで行う
+indent_width = 2                     # インデント幅
+quote_style = "AutoPreferDouble"     # ダブルクォートを優先
+call_parentheses = "None"            # 関数呼び出し時の括弧を省略
+collapse_simple_statement = "Always" # 単純な文を折りたたむ

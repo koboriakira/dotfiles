@@ -34,5 +34,17 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end
 })
 
+-- Pytestコマンドを追加
+vim.api.nvim_create_user_command('Pytest', function(opts)
+  -- 簡潔なtracebackに。また色なしにすることで、quickfixの機能(エラー箇所にジャンプ)を使えるようにする
+  vim.o.makeprg = 'pytest --tb=short --color=no '
+  -- フォーマット: ファイル名:行番号:列番号: エラーメッセージ または ファイル名:行番号: エラーメッセージ
+  vim.o.errorformat = '%A%f:%l:%c: %m,%A%f:%l: %m,%Z%.%#'
+  -- makeコマンドを実行する。makeprgに設定した上述のコマンドを実行して、エラー箇所をquickfixリストに追加する
+  vim.cmd('make ' .. opts.args)
+  -- quickfixウィンドウを開く
+  vim.cmd('copen')
+end, { nargs = '*' })
+
 require "lazy_setup"
 require "polish"

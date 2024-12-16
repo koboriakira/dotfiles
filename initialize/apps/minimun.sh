@@ -12,4 +12,5 @@ brew install \
   procs \
   ripgrep \
   wget \
-  vim
+  vim \
+  yq

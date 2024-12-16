@@ -2,6 +2,7 @@
 .config/yarn
 .config/flutter
 .config/gatsby
+.config/gh/hosts.yml
 .config/github-copilot/hosts.json
 .config/github-copilot/apps.json
 .config/iterm2/AppSupport

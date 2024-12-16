@@ -105,7 +105,7 @@ closebranch() {
     git branch -d $currentbranch
 }
 
-# masterにマージ済のブランチを削除
+# mainにマージ済のブランチを削除
 removeMergedBranch() {
-  git branch --merged | egrep -v "master" | xargs git branch -d
+  git branch --merged origin/HEAD | egrep -v '^\*|main$' | xargs git branch -d
 }

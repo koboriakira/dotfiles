@@ -3,6 +3,31 @@
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
 
+-- 相対パスをクリップボードにコピーする
+vim.api.nvim_create_user_command("Cppath", function()
+    local path = vim.fn.expand("%:p:.")
+    vim.fn.setreg("+", path)
+    vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+-- いま開いているファイルを実行する
+vim.api.nvim_create_user_command("Run", function()
+  -- 現在のファイルタイプを取得
+  local filetype = vim.bo.filetype
+
+  if filetype == "python" then
+    local relative_path = vim.fn.expand("%:p:.")
+    local module_name = relative_path:gsub("%.py$", ""):gsub("/", ".")
+
+    local cmd = "python -m " .. module_name
+    vim.notify('Running: ' .. cmd, vim.log.levels.INFO) -- 実行するコマンドを通知する
+    vim.cmd('split | terminal ' .. cmd) -- Neovimのターミナルでコマンドを実行
+  else
+    -- ファイルタイプがPython以外の場合の通知
+    vim.notify('The "Run" command only works for the specified files.', vim.log.levels.WARN)
+  end
+end, {})
+
 ---@type LazySpec
 return {
 

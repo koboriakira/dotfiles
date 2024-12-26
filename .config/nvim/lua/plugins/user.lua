@@ -28,6 +28,24 @@ vim.api.nvim_create_user_command("Run", function()
   end
 end, {})
 
+-- 社内用のPHPUnitの実行コマンド
+vim.api.nvim_create_user_command('CodmonPhpunit', function()
+  local relative_path = vim.fn.expand("%:p:.")
+
+  -- foo/bar/Hoge.phpファイルをfoo/bar/HogeTest.phpに変換する
+  -- もし`Hoge.class.php`のようなファイル名だった場合は、`HogeTest.php`に変換する
+  local test_filepath
+  if relative_path:match('class%.php$') then
+    test_filepath = relative_path:gsub('.class.php$', 'Test.php')
+  else
+    test_filepath = relative_path:gsub('.php$', 'Test.php')
+  end
+
+  vim.o.makeprg = 'docker exec -w /var/www/html/www.codmon.com manager ./sys/lib/composer/vendor/bin/phpunit test/phpunit/' .. test_filepath
+  vim.cmd('make')
+  vim.cmd('copen')
+end, { nargs = '*' })
+
 ---@type LazySpec
 return {
 

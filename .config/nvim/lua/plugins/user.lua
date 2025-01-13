@@ -5,46 +5,61 @@
 
 -- 相対パスをクリップボードにコピーする
 vim.api.nvim_create_user_command("Cppath", function()
-    local path = vim.fn.expand("%:p:.")
-    vim.fn.setreg("+", path)
-    vim.notify('Copied "' .. path .. '" to the clipboard!')
+  local path = vim.fn.expand "%:p:."
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
 -- いま開いているファイルを実行する
+local last_run_cmd = nil
+
 vim.api.nvim_create_user_command("Run", function()
   -- 現在のファイルタイプを取得
   local filetype = vim.bo.filetype
 
   if filetype == "python" then
-    local relative_path = vim.fn.expand("%:p:.")
+    local relative_path = vim.fn.expand "%:p:."
     local module_name = relative_path:gsub("%.py$", ""):gsub("/", ".")
 
     local cmd = "pipenv run python -m " .. module_name
-    vim.notify('Running: ' .. cmd, vim.log.levels.INFO) -- 実行するコマンドを通知する
-    vim.cmd('split | terminal ' .. cmd .. ' && exit') -- Neovimのターミナルでコマンドを実行し、正常終了したらターミナルを閉じる
+    vim.notify("Running: " .. cmd, vim.log.levels.INFO) -- 実行するコマンドを通知する
+    vim.cmd("split | terminal " .. cmd .. " && exit") -- Neovimのターミナルでコマンドを実行し、正常終了したらターミナルを閉じる
+
+    last_run_cmd = cmd -- コマンドを保存する
   else
     -- ファイルタイプがPython以外の場合の通知
     vim.notify('The "Run" command only works for the specified files.', vim.log.levels.WARN)
   end
 end, {})
 
+-- 最後に実行したコマンドを繰り返し実行する
+vim.api.nvim_create_user_command("RepeatRun", function()
+  if last_run_cmd then
+    vim.notify("Repeating: " .. last_run_cmd, vim.log.levels.INFO) -- 実行するコマンドを通知する
+    vim.cmd("split | terminal " .. last_run_cmd .. " && exit") -- Neovimのターミナルでコマンドを実行し、正常終了したらターミナルを閉じる
+  else
+    vim.notify("No command to repeat.", vim.log.levels.WARN)
+  end
+end, {})
+
 -- 社内用のPHPUnitの実行コマンド
-vim.api.nvim_create_user_command('CodmonPhpunit', function()
-  local relative_path = vim.fn.expand("%:p:.")
+vim.api.nvim_create_user_command("CodmonPhpunit", function()
+  local relative_path = vim.fn.expand "%:p:."
 
   -- foo/bar/Hoge.phpファイルをfoo/bar/HogeTest.phpに変換する
   -- もし`Hoge.class.php`のようなファイル名だった場合は、`HogeTest.php`に変換する
   local test_filepath
-  if relative_path:match('class%.php$') then
-    test_filepath = relative_path:gsub('.class.php$', 'Test.php')
+  if relative_path:match "class%.php$" then
+    test_filepath = relative_path:gsub(".class.php$", "Test.php")
   else
-    test_filepath = relative_path:gsub('.php$', 'Test.php')
+    test_filepath = relative_path:gsub(".php$", "Test.php")
   end
 
-  vim.o.makeprg = 'docker exec -w /var/www/html/www.codmon.com manager ./sys/lib/composer/vendor/bin/phpunit test/phpunit/' .. test_filepath
-  vim.cmd('make')
-  vim.cmd('copen')
-end, { nargs = '*' })
+  vim.o.makeprg = "docker exec -w /var/www/html/www.codmon.com manager ./sys/lib/composer/vendor/bin/phpunit test/phpunit/"
+    .. test_filepath
+  vim.cmd "make"
+  vim.cmd "copen"
+end, { nargs = "*" })
 
 ---@type LazySpec
 return {
@@ -149,13 +164,13 @@ return {
   },
 
   {
-      "kylechui/nvim-surround",
-      version = "*", -- Use for stability; omit to use `main` branch for the latest features
-      event = "VeryLazy",
-      config = function()
-          require("nvim-surround").setup({
-              -- Configuration here, or leave empty to use defaults
-          })
-      end
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
   },
 }

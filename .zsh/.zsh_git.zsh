@@ -44,6 +44,7 @@ gh-create-issue() {
   number=`gh issue create --title $TITLE --body "" | tail -1 | cut -d / -f7`
   branch_name=`_openai-api "#$number $TITLE" name-branch | jq -r '.branch_name'`
   git checkout -b $branch_name
+  gh-create-pr "feat: $TITLE" $number
 }
 
 # Pull Request系

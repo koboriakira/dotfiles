@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# google-japanese-imeを入れるために必要
-sudo softwareupdate --install-rosetta
-
 brew install \
   awscli \
   chrome-cli \

@@ -2,16 +2,29 @@
 
 ## インストール
 
-環境変数DOTPATHを設定可能。デフォルトは`~/.dotfiles`
+### 前提
+
+- [Homebrew](https://brew.sh/)が動くこと
+- git, gh, wget, rosettaが動くこと
+  - 下記のコマンドでインストールがそれぞれ可能
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/install.sh | bash -s
+# gitをインストールするために必要
+xcode-select --install
+
+# gh, wgetをインストールするために必要
+brew install gh wget
+
+# google-japanese-imeを入れるために必要
+sudo softwareupdate --install-rosetta
 ```
 
-gitが使えるなら、下記でもOK
+### インストール手順
 
 ```shell
-git clone git@github.com:a-koboriakira/dotfiles.git && bash dotfiles/install.sh && cd .. && rm -fr dotfiles
+# 環境変数DOTPATHを設定可能。デフォルトは`~/.dotfiles`
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+git clone git@github.com:koboriakira/dotfiles.git && bash dotfiles/install.sh && cd .. && rm -fr dotfiles
 ```
 
 ## Docker環境のセットアップ

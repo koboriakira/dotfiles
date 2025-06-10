@@ -26,7 +26,12 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 if test -e /etc/os-release ; then
   :
 else
+  # フォント
   curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/initialize/fonts.sh | bash -s
+
+  # SSHの設定
   curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/initialize/configure_ssh.sh | bash -s
+
+  # Macの初期設定
   curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/initialize/initialize_mac.sh | bash -s
 fi

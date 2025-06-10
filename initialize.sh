@@ -11,19 +11,13 @@ bash ${DOTPATH}/initialize/apps/install.sh
 echo $(tput setaf 2)Install applications: complete!. ✔︎$(tput sgr0)
 
 # Voltaのインストール
-curl https://get.volta.sh | bash
-echo "export VOLTA_HOME=\$HOME/.volta" >> $DOTPATH/.zsh/.zsh__temporary.zsh
-echo "export PATH=\$VOLTA_HOME/bin:\$PATH" >> $DOTPATH/.zsh/.zsh__temporary.zsh
-echo $(tput setaf 2)Install Volta: complete!. ✔︎$(tput sgr0)
+bash ${DOTPATH}/initialize/install_volta.sh
 
 # zinitのインストール
-mkdir ${HOME}/.zinit && cd $_
-git clone https://github.com/zdharma-mirror/zinit.git ${HOME}/.zinit/bin
-cd $HOME
+bash ${DOTPATH}/initialize/install_zinit.sh
 
 # vim-plugをインストール
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+bash ${DOTPATH}/initialize/install_vim_plug.sh
 
 # starshipのインストール
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes

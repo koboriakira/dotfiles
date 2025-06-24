@@ -19,6 +19,9 @@ bash ${DOTPATH}/initialize/install_zinit.sh
 # vim-plugをインストール
 bash ${DOTPATH}/initialize/install_vim_plug.sh
 
+# git clone
+bash ${DOTPATH}/initialize/github/clone_repositories.sh
+
 # starshipのインストール
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 

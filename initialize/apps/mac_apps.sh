@@ -28,12 +28,14 @@ brew install --cask \
   alfred \
   android-studio \
   docker \
+  github \
   google-chrome \
   google-japanese-ime \
   hammerspoon \
   iterm2 \
   karabiner-elements \
   licecap \
+  mediahuman-audio-converter \
   notion \
   rectangle \
   sequel-ace \

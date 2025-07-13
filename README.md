@@ -22,6 +22,10 @@ sudo softwareupdate --install-rosetta
 ### インストール手順
 
 ```shell
+git clone git@github.com.koboriakira:koboriakira/dotfiles.git ~/.dotfiles
+```
+
+```shell
 # 環境変数DOTPATHを設定可能。デフォルトは`~/.dotfiles`
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 git clone git@github.com:koboriakira/dotfiles.git && bash dotfiles/install.sh && cd .. && rm -fr dotfiles

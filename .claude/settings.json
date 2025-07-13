@@ -1,0 +1,66 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Edit(**)",
+      "Grep(**)",
+      "Glob(**)",
+      "Bash(npm *)",
+      "Bash(yarn *)",
+      "Bash(pnpm *)",
+      "Bash(git *)",
+      "Bash(pip *)",
+      "Bash(python *)",
+      "Bash(node *)",
+      "Bash(cargo *)",
+      "Bash(go *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(cat *)",
+      "Bash(grep *)",
+      "Bash(find *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:stackoverflow.com)",
+      "WebFetch(domain:docs.python.org)",
+      "WebFetch(domain:developer.mozilla.org)",
+      "mcp__fetch__*" // MCPサーバーのfetchツール全般を許可
+    ],
+    "deny": [
+      "Edit(~/.ssh/**)",
+      "Edit(~/.aws/**)",
+      "Edit(/etc/**)",
+      "Edit(~/.zshrc)",
+      "Edit(~/.bashrc)",
+      "Bash(rm -rf *)",
+      "Bash(sudo *)",
+      "Bash(chmod 777 *)",
+      "Bash(dd *)"
+    ]
+  },
+  "env": {
+    "NODE_ENV": "development",
+    "PYTHONPATH": ".",
+    "EDITOR": "code",
+    "PRIVATE_GITHUB_PAT_TOKEN": "your-github-pat-token-here"
+  },
+  "mcpServers": {
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    }
+  },
+  "workflow": {
+    "autoApprove": true,
+    "confirmBeforeRun": false,
+    "maxIterations": 20,
+    "dangerousOperationsOnly": true
+  },
+  "memory": {
+    "enableAutoLoad": true, // メモリファイルの自動読み込み
+    "recursiveSearch": true, // 親ディレクトリまで再帰的に検索
+    "maxDepth": 10, // 再帰検索の最大深度
+    "defaultMemoryLocation": "user" // #ショートカットのデフォルト保存先
+  }
+}

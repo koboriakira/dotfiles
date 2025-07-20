@@ -25,6 +25,9 @@ bash ${DOTPATH}/initialize/github/clone_repositories.sh
 # Python関連のインストール
 bash ${DOTPATH}/initialize/python/install_python.sh
 
+# Claudeのインストール
+bash ${DOTPATH}/initialize/install_claude.sh
+
 # starshipのインストール
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 

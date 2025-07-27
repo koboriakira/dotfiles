@@ -13,6 +13,7 @@
 .claude/*
 !.claude/CLAUDE.md
 !.claude/settings.json
+!.claude/commands/
 
 .DS_Store
 __pycache__

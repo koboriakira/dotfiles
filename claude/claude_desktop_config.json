@@ -1,5 +1,5 @@
 {
-  "globalShortcut": "Shift+Space",
+  "globalShortcut": "Shift+Alt+Space",
   "mcpServers": {
     "playwright": {
       "command": "npx",

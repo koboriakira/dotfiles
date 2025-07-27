@@ -10,8 +10,9 @@
 .config/karabiner/automatic_backups
 .config/github-copilot/versions.json
 
-.claude
-.claude/settings.json
+.claude/*
+!.claude/CLAUDE.md
+!.claude/settings.json
 
 .DS_Store
 __pycache__

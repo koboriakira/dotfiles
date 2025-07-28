@@ -37,6 +37,7 @@ brew install --cask \
   licecap \
   mediahuman-audio-converter \
   notion \
+  notion-calendar \
   rectangle \
   sequel-ace \
   session-manager-plugin \

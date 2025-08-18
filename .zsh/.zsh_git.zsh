@@ -118,3 +118,14 @@ zle -N checkout-fzf-gitbranch
 #     gh pr view $PULL_REQUEST --web
 #   fi
 # }
+
+git-set-upstream() {
+  # upstreamを設定する
+  # $1: リモート名 (デフォルトはorigin)
+  # $2: ブランチ名 (デフォルトは現在のブランチ)
+
+  local remote=${1:-origin}
+  local branch=${2:-$(git branch --show-current)}
+
+  git branch --set-upstream-to=$remote/$branch $branch
+}

@@ -22,7 +22,8 @@ brew install \
   pstree \
   python \
   pyenv \
-  pipenv
+  pipenv \
+  uv
 brew install --cask \
   1password \
   alfred \

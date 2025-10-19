@@ -44,6 +44,8 @@ brew install --cask \
   session-manager-plugin \
   slack \
   swinsian \
+  tailscale-app \
+  termius \
   visual-studio-code \
   wezterm
 

@@ -13,6 +13,9 @@ echo $(tput setaf 2)Install applications: complete!. ✔︎$(tput sgr0)
 # Voltaのインストール
 bash ${DOTPATH}/initialize/install_volta.sh
 
+# Cargoのインストール
+bash ${DOTPATH}/initialize/install_cargo.sh
+
 # zinitのインストール
 bash ${DOTPATH}/initialize/install_zinit.sh
 

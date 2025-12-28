@@ -20,3 +20,6 @@ __pycache__
 
 test.sh
 .zsh/.zsh__temporary.zsh
+
+.env
+.env.local

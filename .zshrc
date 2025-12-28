@@ -18,6 +18,7 @@ source $HOME/.zsh/.zsh_functions.zsh
 source $HOME/.zsh/.zsh_keybind.zsh
 source $HOME/.zsh/.zsh_python.zsh
 source $HOME/.zsh/.zsh_chatgpt.zsh
+source $HOME/.zsh/.zsh_obsidian.zsh
 
 # 初期化
 eval "$(starship init zsh)"

@@ -65,4 +65,13 @@ function obsd-task() {
         echo "screenocr の出力:"
         echo "$output"
     fi
+
+    # デイリーノートにリンクを追加
+    local daily_note_path=$(get-daily-note-path)
+    if [ -f "$daily_note_path" ]; then
+        echo "- [[task_${task_name}]]" >> "$daily_note_path"
+        echo "デイリーノートにリンクを追加しました: $daily_note_path"
+    else
+        echo "警告: デイリーノートが見つかりません: $daily_note_path"
+    fi
 }

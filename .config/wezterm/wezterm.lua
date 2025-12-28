@@ -10,7 +10,7 @@ end
 config.color_scheme = 'AdventureTime'
 
 -- 背景透過
-config.window_background_opacity = 0.85
+config.window_background_opacity = 1.0
 
 -- フォントの設定
 config.font = wezterm.font('PlemolJP Console NF', {weight='Regular', italic=false})

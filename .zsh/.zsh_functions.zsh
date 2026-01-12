@@ -163,3 +163,31 @@ function slack-post() {
         "text": "'$message'"
     }' > /dev/null
 }
+
+# 指定したポートを使用しているプロセスを終了する
+kill_port() {
+    local port=$1
+
+    if [ -z "$port" ]; then
+        echo "Usage: kill_port <port_number>"
+        return 1
+    fi
+
+    # ポートを使用しているプロセスIDを取得
+    local pid=$(lsof -ti :$port)
+
+    if [ -z "$pid" ]; then
+        echo "ポート $port を使用しているプロセスは見つかりませんでした"
+        return 0
+    fi
+
+    # プロセスを終了
+    kill $pid
+
+    if [ $? -eq 0 ]; then
+        echo "ポート $port を使用していたプロセス (PID: $pid) を終了しました"
+    else
+        echo "プロセス (PID: $pid) の終了に失敗しました。強制終了を試みます..."
+        kill -9 $pid
+    fi
+}

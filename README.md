@@ -36,23 +36,21 @@ git clone git@github.com:koboriakira/dotfiles.git && bash dotfiles/install.sh &&
 ### Debian
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/docker_setup_debian.sh | bash -s
+curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/initialize/docker/setup_debian.sh | bash -s
 ```
 
 ### Redhat
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/docker_setup_redhat.sh | bash -s
+curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/initialize/docker/setup_redhat.sh | bash -s
 ```
 
 ## 工程の概要
 
 - brewをインストール
-  - Linuxでもlinuxbrewとして利用できるようなのでこれを採用
-  - もしかしたら各OSごとに書き分けるかも
-- アプリをインストール
-  - 詳細は後述のbrew, brew caskを参照
-  - そのほかzinit, starship, vim-plugも入れている
+- miseでNode.js, Python, Rustのバージョン管理
+- アプリをインストール（brew, brew cask）
+- zinit, starship, vim-plugを導入
 
 ## 参照
 

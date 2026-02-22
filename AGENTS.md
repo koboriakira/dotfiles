@@ -13,19 +13,18 @@
 ├── install.sh          # エントリポイント: clone → initialize → deploy
 ├── initialize.sh       # 初期セットアップ（brew, アプリ, mise, zinit 等）
 ├── deploy.sh           # ドットファイルを $HOME にシンボリックリンク
-├── initialize/         # 各ツールのインストールスクリプト群
+├── initialize/         # 全インストールスクリプト群
 │   ├── apps/           # brew / brew cask によるアプリインストール
+│   ├── docker/         # Docker 環境向けセットアップ（Debian, Redhat）
 │   ├── github/         # リポジトリの clone
 │   └── python/         # Python パッケージ管理ツール（uv）のセットアップ
+├── scripts/            # ユーティリティスクリプト
 ├── .zsh/               # Zsh 設定ファイル群（alias, git, keybind, etc.）
 ├── .zshrc              # Zsh メインエントリポイント
 ├── .zshenv             # 環境変数の定義
 ├── .config/            # アプリケーション設定（nvim, starship, mise, etc.）
 ├── .claude/            # Claude Code 用設定・コマンド
 ├── claude/             # Claude Desktop 設定
-├── scripts/            # ユーティリティスクリプト
-├── python/             # Python スクリプト
-├── docker_setup_*.sh   # Docker 環境向けセットアップ
 └── .env.template       # 環境変数テンプレート
 ```
 

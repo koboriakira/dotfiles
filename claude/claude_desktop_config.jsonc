@@ -1,0 +1,55 @@
+{
+  // グローバルショートカットキー
+  "globalShortcut": "Shift+Alt+Space",
+
+  // MCP (Model Context Protocol) サーバー設定
+  "mcpServers": {
+    // ココナラスキャナー: ココナラの情報を取得するMCPサーバー
+    "coconala-scanner": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "<YOUR_HOME_DIRECTORY>/git/cloud-sourcing", // プロジェクトのパスに置き換える
+        "run",
+        "coconala-mcp"
+      ],
+      "env": {
+        "GEMINI_API_KEY": "<YOUR_GEMINI_API_KEY>" // Gemini APIキーに置き換える
+      }
+    },
+    // Playwright: ブラウザ操作用MCPサーバー（ビジョンモード有効）
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest", "--vision"]
+    },
+    // Slack: Slack連携用MCPサーバー
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}", // .env から読み込まれる
+        "SLACK_TEAM_ID": "${SLACK_TEAM_ID}" // .env から読み込まれる
+      }
+    }
+  },
+
+  // Claude Desktop のユーザー設定
+  "preferences": {
+    // メニューバーアイコンの表示
+    "menuBarEnabled": false,
+    // 音声入力のショートカット
+    "quickEntryDictationShortcut": "capslock",
+    // ローカルエージェントモードで信頼するフォルダ一覧
+    "localAgentModeTrustedFolders": [
+      "<YOUR_HOME_DIRECTORY>/.screenocr_logs",
+      "<YOUR_HOME_DIRECTORY>/Library/Mobile Documents/iCloud~md~obsidian/Documents/my-vault/dailynote",
+      "<YOUR_HOME_DIRECTORY>"
+    ],
+    // Cowork（スケジュールタスク）の有効化
+    "coworkScheduledTasksEnabled": false,
+    // サイドバーのモード（"code" | "chat"）
+    "sidebarMode": "code",
+    // 権限バイパスモード（確認なしでツール実行）
+    "bypassPermissionsModeEnabled": true
+  }
+}

@@ -11,16 +11,16 @@
 ```
 .dotfiles/
 ├── install.sh          # エントリポイント: clone → initialize → deploy
-├── initialize.sh       # 初期セットアップ（brew, アプリ, volta, cargo, zinit 等）
+├── initialize.sh       # 初期セットアップ（brew, アプリ, mise, zinit 等）
 ├── deploy.sh           # ドットファイルを $HOME にシンボリックリンク
 ├── initialize/         # 各ツールのインストールスクリプト群
 │   ├── apps/           # brew / brew cask によるアプリインストール
 │   ├── github/         # リポジトリの clone
-│   └── python/         # Python 環境のセットアップ
+│   └── python/         # Python パッケージ管理ツール（uv）のセットアップ
 ├── .zsh/               # Zsh 設定ファイル群（alias, git, keybind, etc.）
 ├── .zshrc              # Zsh メインエントリポイント
 ├── .zshenv             # 環境変数の定義
-├── .config/            # アプリケーション設定（nvim, starship, etc.）
+├── .config/            # アプリケーション設定（nvim, starship, mise, etc.）
 ├── .claude/            # Claude Code 用設定・コマンド
 ├── claude/             # Claude Desktop 設定
 ├── scripts/            # ユーティリティスクリプト
@@ -28,6 +28,16 @@
 ├── docker_setup_*.sh   # Docker 環境向けセットアップ
 └── .env.template       # 環境変数テンプレート
 ```
+
+## ツールバージョン管理（mise）
+
+[mise](https://mise.jdx.dev/) を使用して開発ツールのバージョンを一元管理している。
+
+- **設定ファイル**: `.config/mise/config.toml` にグローバルなツールバージョンを宣言的に定義する。
+- **管理対象ツール**: Node.js, Python, Rust 等。新しいツールを追加する場合は `config.toml` の `[tools]` セクションに追記する。
+- **シェル統合**: `.zshrc` で `mise activate zsh` を実行し、シェルセッションでツールを自動的に利用可能にしている。
+- **プロジェクト固有のバージョン**: 各プロジェクトに `mise.toml` を配置すれば、プロジェクト単位でツールバージョンを上書きできる。
+- **旧ツールとの関係**: Volta（Node.js）、pyenv（Python）、rustup（Rust）は mise に統合済み。
 
 ## 重要な規約
 

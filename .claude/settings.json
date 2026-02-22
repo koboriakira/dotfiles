@@ -1,4 +1,10 @@
 {
+  "env": {
+    "NODE_ENV": "development",
+    "PYTHONPATH": ".",
+    "EDITOR": "code",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "Read(**)",
@@ -41,12 +47,6 @@
       "Bash(dd *)"
     ]
   },
-  "env": {
-    "NODE_ENV": "development",
-    "PYTHONPATH": ".",
-    "EDITOR": "code",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
@@ -64,5 +64,6 @@
     "recursiveSearch": true,
     "maxDepth": 10,
     "defaultMemoryLocation": "user"
-  }
+  },
+  "skipDangerousModePermissionPrompt": true
 }

@@ -21,7 +21,7 @@ vim.api.nvim_create_user_command("Run", function()
     local relative_path = vim.fn.expand "%:p:."
     local module_name = relative_path:gsub("%.py$", ""):gsub("/", ".")
 
-    local cmd = "pipenv run python -m " .. module_name
+    local cmd = "python -m " .. module_name
     vim.notify("Running: " .. cmd, vim.log.levels.INFO) -- 実行するコマンドを通知する
     vim.cmd("split | terminal " .. cmd .. " && exit") -- Neovimのターミナルでコマンドを実行し、正常終了したらターミナルを閉じる
 

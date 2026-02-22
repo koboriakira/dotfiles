@@ -36,7 +36,8 @@ function obsd-task() {
         return 1
     fi
 
-    local task_name="$1"
+    # ファイルパスに使えない文字をアンダースコアに置換
+    local task_name=$(echo "$1" | sed 's/[/:*?"<>|\\]/_/g')
     local md_file="${OBSIDIAN_MY_VAULD_DIR}/00_inbox/task_${task_name}.md"
 
     # マークダウンファイルを作成
@@ -46,25 +47,8 @@ function obsd-task() {
     # screenocr split コマンドを実行
     OLDPWD=$(pwd)
     cd ${HOME}/git/screen-times
-    local output=$(screenocr split "$task_name" 2>&1)
+    local jsonl_path=$(screenocr split "$task_name" | head -1)
     cd $OLDPWD
-
-    # 実行結果から .jsonl ファイルパスを抽出
-    local jsonl_path=$(echo "$output" | grep -o '/Users/[^[:space:]]*\.jsonl' | head -n 1)
-
-    if [ -n "$jsonl_path" ]; then
-        echo "" >> "$md_file"
-        echo "## ログファイル" >> "$md_file"
-        echo "" >> "$md_file"
-        echo "$jsonl_path" >> "$md_file"
-        echo "" >> "$md_file"
-        echo "タスクファイルを作成しました: $md_file"
-        echo "ログファイル: $jsonl_path"
-    else
-        echo "警告: .jsonl ファイルパスを抽出できませんでした"
-        echo "screenocr の出力:"
-        echo "$output"
-    fi
 
     # デイリーノートにリンクを追加
     local daily_note_path=$(get-daily-note-path)

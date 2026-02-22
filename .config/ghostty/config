@@ -23,3 +23,5 @@ keybind = ctrl+m=text:\r
 
 # デスクトップ通知を有効化
 desktop-notifications = true
+
+font-size = 18

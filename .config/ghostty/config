@@ -1,9 +1,6 @@
 # Ghostty 設定ファイル
 # 参考: https://zenn.dev/sprix_it/articles/a25ddd0ca4d175
 
-# フォントサイズ
-font-size = 18
-
 # 起動時にウィンドウを最大化
 maximize = true
 
@@ -23,3 +20,6 @@ keybind = ctrl+l=text:\x0c
 # Ctrl+M は本来キャリッジリターン（\r）を送信するキーだが、
 # 環境によっては期待通りに動かないことがある。明示的に設定。
 keybind = ctrl+m=text:\r
+
+# デスクトップ通知を有効化
+desktop-notifications = true

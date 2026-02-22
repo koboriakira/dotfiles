@@ -55,3 +55,28 @@ curl -fsSL https://raw.githubusercontent.com/koboriakira/dotfiles/main/initializ
 ## 参照
 
 - [VSCode NeoVim拡張　使うまでに詰まったところ](https://zenn.dev/bun913/articles/02785aed0ba50e)
+
+## Claude Code 設定の管理方針
+
+`~/.claude/` ディレクトリは `deploy.sh` によりリポジトリの `.claude/` へシンボリックリンクされる。
+
+### Git 管理する
+
+| ファイル | 説明 |
+|---|---|
+| `.claude/settings.json` | グローバル設定（permissions, env, hooks, MCP等） |
+| `.claude/CLAUDE.md` | ユーザーレベルのグローバル指示書 |
+| `.claude/commands/*.md` | カスタムスラッシュコマンド定義 |
+| `.claude/agents/*.md` | サブエージェント定義 |
+
+### Git 管理しない
+
+| ファイル | 理由 |
+|---|---|
+| `.claude/settings.local.json` | マシン固有のオーバーライド。`.gitignore` で除外 |
+| `~/.claude.json` | OAuth セッション・キャッシュ |
+| `.claude/` 配下のその他 (cache, history, debug 等) | ランタイムデータ。`.gitignore` で `.claude/*` として除外 |
+
+### 秘密情報の取り扱い
+
+`settings.json` に API キーやトークンを直書きしないこと。秘密情報は `settings.local.json` または環境変数で管理する。

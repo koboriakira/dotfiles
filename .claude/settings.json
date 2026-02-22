@@ -33,7 +33,9 @@
       "Edit(/etc/**)",
       "Edit(~/.zshrc)",
       "Edit(~/.bashrc)",
+      "Bash(git rebase :*)",
       "Bash(rm -rf *)",
+      "Bash(rm -rf /*)",
       "Bash(sudo *)",
       "Bash(chmod 777 *)",
       "Bash(dd *)"
@@ -42,7 +44,14 @@
   "env": {
     "NODE_ENV": "development",
     "PYTHONPATH": ".",
-    "EDITOR": "code"
+    "EDITOR": "code",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "php-lsp@claude-plugins-official": true
   },
   "mcpServers": {
     "fetch": {

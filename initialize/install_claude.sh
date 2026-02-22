@@ -6,4 +6,5 @@ if [ -e "$HOME/Library/Application Support/Claude/claude_desktop_config.json" ];
 fi
 
 # シンボリックリンクを作成
+touch "$HOME/.dotfiles/claude/claude_desktop_config.json"
 ln -s "$HOME/.dotfiles/claude/claude_desktop_config.json" "$HOME/Library/Application Support/Claude/claude_desktop_config.json"

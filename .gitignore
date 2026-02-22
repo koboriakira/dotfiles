@@ -24,3 +24,5 @@ test.sh
 
 .env
 .env.local
+
+claude/claude_desktop_config.json

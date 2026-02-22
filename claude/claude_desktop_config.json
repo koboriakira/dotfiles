@@ -8,28 +8,21 @@
         "--vision"
       ]
     },
-    "slack": {
-      "command": "npx",
+    "screening-test": {
+      "command": "uv",
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-slack"
-      ],
-      "env": {
-        "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
-        "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
-      }
+        "run",
+        "--directory",
+        "/Users/koboriakira/git/screening-test",
+        "python",
+        "-m",
+        "screening_test.mcp_server"
+      ]
     }
   },
   "preferences": {
-    "menuBarEnabled": false,
-    "quickEntryDictationShortcut": "capslock",
-    "localAgentModeTrustedFolders": [
-      "/Users/a_kobori/.screenocr_logs",
-      "/Users/a_kobori/Library/Mobile Documents/iCloud~md~obsidian/Documents/my-vault/dailynote",
-      "/Users/a_kobori"
-    ],
     "coworkScheduledTasksEnabled": false,
-    "sidebarMode": "code",
+    "sidebarMode": "chat",
     "bypassPermissionsModeEnabled": true
   }
 }

@@ -1,0 +1,22 @@
+# Ghostty 設定ファイル
+# 参考: https://zenn.dev/sprix_it/articles/a25ddd0ca4d175
+
+# 起動時にウィンドウを最大化
+maximize = true
+
+# JIS キーボード対応: タブ移動のキーバインドをスワップ
+# JIS キーボードでは [ と ] のキーコードが US 配列と逆になるため、
+# Cmd+Shift+[ / Cmd+Shift+] でのタブ移動が直感と逆になる。
+# アクションをスワップすることで、見た目通りの方向にタブ移動できる。
+keybind = super+shift+bracket_left=next_tab
+keybind = super+shift+bracket_right=previous_tab
+
+# Ctrl+L で画面クリア
+# Ghostty ではデフォルトで別の動作に割り当てられている場合がある。
+# 明示的に \x0c（フォームフィード）を送信するよう設定する。
+keybind = ctrl+l=text:\x0c
+
+# Ctrl+M で Enter 送信
+# Ctrl+M は本来キャリッジリターン（\r）を送信するキーだが、
+# 環境によっては期待通りに動かないことがある。明示的に設定。
+keybind = ctrl+m=text:\r

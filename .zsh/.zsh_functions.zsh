@@ -191,3 +191,11 @@ kill_port() {
         kill -9 $pid
     fi
 }
+
+# SSH 接続時に TERM を xterm-256color に切り替える
+# Ghostty はデフォルトで TERM=xterm-ghostty を設定するが、
+# リモート側に xterm-ghostty の terminfo がないと Ctrl+L 等が動作しない。
+# ローカルでは xterm-ghostty のまま Ghostty 固有機能を維持する。
+ssh() {
+  TERM=xterm-256color command ssh "$@"
+}

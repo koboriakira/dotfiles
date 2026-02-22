@@ -26,6 +26,7 @@ brew install --cask \
   alfred \
   android-studio \
   docker \
+  ghostty \
   github \
   google-chrome \
   google-japanese-ime \

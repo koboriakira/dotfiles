@@ -15,7 +15,7 @@
 !.claude/settings.json
 !.claude/commands/
 !.claude/agents/
-
+!.claude/skills/
 .DS_Store
 __pycache__
 

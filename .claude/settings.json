@@ -25,7 +25,7 @@
       "WebFetch(domain:stackoverflow.com)",
       "WebFetch(domain:docs.python.org)",
       "WebFetch(domain:developer.mozilla.org)",
-      "mcp__fetch__*" // MCPサーバーのfetchツール全般を許可
+      "mcp__fetch__*"
     ],
     "deny": [
       "Edit(~/.ssh/**)",
@@ -53,12 +53,6 @@
     "pyright-lsp@claude-plugins-official": true,
     "php-lsp@claude-plugins-official": true
   },
-  "mcpServers": {
-    "fetch": {
-      "command": "uvx",
-      "args": ["mcp-server-fetch"]
-    }
-  },
   "workflow": {
     "autoApprove": true,
     "confirmBeforeRun": false,
@@ -66,9 +60,9 @@
     "dangerousOperationsOnly": true
   },
   "memory": {
-    "enableAutoLoad": true, // メモリファイルの自動読み込み
-    "recursiveSearch": true, // 親ディレクトリまで再帰的に検索
-    "maxDepth": 10, // 再帰検索の最大深度
-    "defaultMemoryLocation": "user" // #ショートカットのデフォルト保存先
+    "enableAutoLoad": true,
+    "recursiveSearch": true,
+    "maxDepth": 10,
+    "defaultMemoryLocation": "user"
   }
 }

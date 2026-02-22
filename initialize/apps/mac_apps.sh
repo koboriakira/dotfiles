@@ -20,9 +20,6 @@ brew install \
   nektos/tap/act \
   plantuml \
   pstree \
-  python \
-  pyenv \
-  pipenv \
   uv
 brew install --cask \
   1password \

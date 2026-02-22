@@ -1,0 +1,11 @@
+# mise グローバル設定
+# https://mise.jdx.dev/configuration.html
+
+[tools]
+node = "lts"
+python = "3.13"
+rust = "latest"
+
+[settings]
+# ツールのインストール時に自動で yes を選択
+yes = true

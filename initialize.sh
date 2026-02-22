@@ -10,11 +10,8 @@ bash ${DOTPATH}/initialize/install_brew.sh
 bash ${DOTPATH}/initialize/apps/install.sh
 echo $(tput setaf 2)Install applications: complete!. ✔︎$(tput sgr0)
 
-# Voltaのインストール
-bash ${DOTPATH}/initialize/install_volta.sh
-
-# Cargoのインストール
-bash ${DOTPATH}/initialize/install_cargo.sh
+# miseのインストール（Node.js, Python, Rust 等のバージョン管理）
+bash ${DOTPATH}/initialize/install_mise.sh
 
 # zinitのインストール
 bash ${DOTPATH}/initialize/install_zinit.sh
@@ -25,7 +22,7 @@ bash ${DOTPATH}/initialize/install_vim_plug.sh
 # git clone
 bash ${DOTPATH}/initialize/github/clone_repositories.sh
 
-# Python関連のインストール
+# Python関連のインストール（uv）
 bash ${DOTPATH}/initialize/python/install_python.sh
 
 # Claudeのインストール

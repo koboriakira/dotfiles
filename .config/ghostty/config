@@ -1,6 +1,9 @@
 # Ghostty 設定ファイル
 # 参考: https://zenn.dev/sprix_it/articles/a25ddd0ca4d175
 
+# フォントサイズ
+font-size = 18
+
 # 起動時にウィンドウを最大化
 maximize = true
 

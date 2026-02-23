@@ -35,7 +35,6 @@
 
 - [ ] ユーザーの指示内容がすべて満たされている
 - [ ] コード変更がある場合：テスト成功・リンターエラーなし・コミット済み
-- [ ] 完了通知音を鳴らした（`afplay /System/Library/Sounds/Glass.aiff`）
 - [ ] Obsidian のセッション記録を作成・更新した（→ [手順](#セッション記録obsidian)）
 - [ ] AivisSpeech で作業サマリーを読み上げた（→ [手順](#音声読み上げaivisspeech-engine)）
 

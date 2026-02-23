@@ -73,7 +73,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "terminal-notifier -title 'Claude Code' -message 'Ready for input' -sender com.anthropic.claudefordesktop -sound default"
+            "command": "terminal-notifier -title 'Claude Code' -message 'Ready for input' -sound default"
           }
         ]
       },
@@ -82,7 +82,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "terminal-notifier -title 'Claude Code' -message 'Permission required' -sender com.anthropic.claudefordesktop -sound Ping"
+            "command": "terminal-notifier -title 'Claude Code' -message 'Permission required' -sound Ping"
           }
         ]
       }
@@ -92,7 +92,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "terminal-notifier -title 'Claude Code' -message 'Task completed' -sender com.anthropic.claudefordesktop -sound Hero; osascript -e 'tell application \"Ghostty\" to activate'"
+            "command": "terminal-notifier -title 'Claude Code' -message 'Task completed' -sound Hero"
           }
         ]
       }

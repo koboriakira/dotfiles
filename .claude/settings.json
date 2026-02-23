@@ -92,7 +92,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "terminal-notifier -title 'Claude Code' -message 'Task completed' -sender com.anthropic.claudefordesktop; (afplay /System/Library/Sounds/Hero.aiff &); osascript -e 'tell application \"Ghostty\" to activate'"
+            "command": "terminal-notifier -title 'Claude Code' -message 'Task completed' -sender com.anthropic.claudefordesktop -sound Hero; osascript -e 'tell application \"Ghostty\" to activate'"
           }
         ]
       }

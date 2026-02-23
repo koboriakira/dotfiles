@@ -27,6 +27,12 @@ desktop-notifications = true
 # ベル通知: タイトルバー変更 + ウィンドウのアテンション要求
 bell-features = title,attention
 
+# 非フォーカスペインの視覚的区別
+unfocused-split-opacity = 0.7
+unfocused-split-fill = #1e2030
+split-divider-color = #7aa2f7
+focus-follows-mouse = true
+
 font-size = 18
 
 macos-option-as-alt = left

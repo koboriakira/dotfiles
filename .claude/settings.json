@@ -65,5 +65,37 @@
     "maxDepth": 10,
     "defaultMemoryLocation": "user"
   },
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message 'Ready for input' -sender com.anthropic.claudefordesktop -sound default"
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message 'Permission required' -sender com.anthropic.claudefordesktop -sound Ping"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message 'Task completed' -sender com.anthropic.claudefordesktop && afplay /System/Library/Sounds/Hero.aiff & osascript -e 'tell application \"Ghostty\" to activate'"
+          }
+        ]
+      }
+    ]
+  }
 }

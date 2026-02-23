@@ -204,9 +204,18 @@ ssh() {
 tcode() {
   local dir="$PWD"
   local claude_cmd="claude"
-  if [[ "$1" == "--dangerously-skip-permissions" ]]; then
-    claude_cmd="claude --dangerously-skip-permissions"
-  fi
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --dangerously-skip-permissions|--worktrees)
+        claude_cmd="$claude_cmd $1"
+        ;;
+      *)
+        echo "Unknown option: $1" >&2
+        return 1
+        ;;
+    esac
+    shift
+  done
 
   osascript - "$dir" "$claude_cmd" <<'APPLESCRIPT'
     on run argv

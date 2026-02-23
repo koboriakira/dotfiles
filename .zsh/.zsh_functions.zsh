@@ -202,37 +202,53 @@ ssh() {
 
 # Ghostty で Claude Code + lazygit + Terminal の3ペインレイアウトを展開する
 tcode() {
-  osascript <<'APPLESCRIPT'
-    tell application "Ghostty" to activate
-    delay 0.5
+  local dir="$PWD"
+  local claude_cmd="claude"
+  if [[ "$1" == "--dangerously-skip-permissions" ]]; then
+    claude_cmd="claude --dangerously-skip-permissions"
+  fi
 
-    tell application "System Events"
-      tell process "Ghostty"
-        -- 右に分割 (⌘+D)
-        keystroke "d" using {command down}
-        delay 0.5
+  osascript - "$dir" "$claude_cmd" <<'APPLESCRIPT'
+    on run argv
+      set targetDir to item 1 of argv
+      set claudeCmd to item 2 of argv
 
-        -- 右ペインで lazygit を実行
-        keystroke "lazygit"
-        key code 36 -- Return
-        delay 0.5
+      tell application "Ghostty" to activate
+      delay 0.5
 
-        -- 左ペインにフォーカス (⌘+Ctrl+←)
-        key code 123 using {command down, control down}
-        delay 0.5
+      tell application "System Events"
+        tell process "Ghostty"
+          -- 右に分割 (⌘+D)
+          keystroke "d" using {command down}
+          delay 0.5
 
-        -- 下に分割 (⌘+Shift+D)
-        keystroke "d" using {command down, shift down}
-        delay 0.5
+          -- 右ペインで cd && lazygit を実行
+          keystroke "cd " & targetDir & " && lazygit"
+          key code 36 -- Return
+          delay 0.5
 
-        -- 上ペインにフォーカス (⌘+Ctrl+↑)
-        key code 126 using {command down, control down}
-        delay 0.5
+          -- 左ペインにフォーカス (⌘+Ctrl+←)
+          key code 123 using {command down, control down}
+          delay 0.5
 
-        -- 上ペインで claude を実行
-        keystroke "claude"
-        key code 36 -- Return
+          -- 下に分割 (⌘+Shift+D)
+          keystroke "d" using {command down, shift down}
+          delay 0.5
+
+          -- 下ペインで cd を実行（ターミナルペイン）
+          keystroke "cd " & targetDir
+          key code 36 -- Return
+          delay 0.5
+
+          -- 上ペインにフォーカス (⌘+Ctrl+↑)
+          key code 126 using {command down, control down}
+          delay 0.5
+
+          -- 上ペインで cd && claude を実行
+          keystroke "cd " & targetDir & " && " & claudeCmd
+          key code 36 -- Return
+        end tell
       end tell
-    end tell
+    end run
 APPLESCRIPT
 }

@@ -227,11 +227,25 @@ tcode() {
 
       tell application "System Events"
         tell process "Ghostty"
-          -- 右に分割 (⌘+D)
+          -- 右に分割 (⌘+D) → 右ペインにフォーカスが移る
           keystroke "d" using {command down}
           delay 0.5
 
-          -- クリップボード経由で貼り付け（入力ソースに依存しない）
+          -- 右ペインを下に分割 (⌘+Shift+D) → 右下ペインにフォーカスが移る
+          keystroke "d" using {command down, shift down}
+          delay 0.5
+
+          -- 右下ペインに Terminal (cd のみ)
+          set the clipboard to "cd " & targetDir
+          keystroke "v" using {command down}
+          key code 36 -- Return
+          delay 0.5
+
+          -- 右上ペインにフォーカス (⌘+Ctrl+↑)
+          key code 126 using {command down, control down}
+          delay 0.5
+
+          -- 右上ペインに lazygit
           set the clipboard to "cd " & targetDir & " && lazygit"
           keystroke "v" using {command down}
           key code 36 -- Return
@@ -241,21 +255,7 @@ tcode() {
           key code 123 using {command down, control down}
           delay 0.5
 
-          -- 下に分割 (⌘+Shift+D)
-          keystroke "d" using {command down, shift down}
-          delay 0.5
-
-          -- クリップボード経由で貼り付け
-          set the clipboard to "cd " & targetDir
-          keystroke "v" using {command down}
-          key code 36 -- Return
-          delay 0.5
-
-          -- 上ペインにフォーカス (⌘+Ctrl+↑)
-          key code 126 using {command down, control down}
-          delay 0.5
-
-          -- クリップボード経由で貼り付け
+          -- 左ペインに Claude Code
           set the clipboard to "cd " & targetDir & " && " & claudeCmd
           keystroke "v" using {command down}
           key code 36 -- Return

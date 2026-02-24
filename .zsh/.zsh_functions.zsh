@@ -226,16 +226,14 @@ tcode() {
       delay 0.5
 
       tell application "System Events"
-        -- 入力ソースを英数に切り替え（日本語入力を防止）
-        key code 102
-        delay 0.3
-
         tell process "Ghostty"
           -- 右に分割 (⌘+D)
           keystroke "d" using {command down}
           delay 0.5
 
-          -- 右ペインで cd && lazygit を実行
+          -- 英数に切り替えてからコマンド入力
+          key code 102
+          delay 0.2
           keystroke "cd " & targetDir & " && lazygit"
           key code 36 -- Return
           delay 0.5
@@ -248,7 +246,9 @@ tcode() {
           keystroke "d" using {command down, shift down}
           delay 0.5
 
-          -- 下ペインで cd を実行（ターミナルペイン）
+          -- 英数に切り替えてからコマンド入力
+          key code 102
+          delay 0.2
           keystroke "cd " & targetDir
           key code 36 -- Return
           delay 0.5
@@ -257,7 +257,9 @@ tcode() {
           key code 126 using {command down, control down}
           delay 0.5
 
-          -- 上ペインで cd && claude を実行
+          -- 英数に切り替えてからコマンド入力
+          key code 102
+          delay 0.2
           keystroke "cd " & targetDir & " && " & claudeCmd
           key code 36 -- Return
         end tell

@@ -8,6 +8,7 @@
 .config/github-copilot/apps.json
 .config/iterm2/AppSupport
 .config/karabiner/automatic_backups
+.config/karabiner/karabiner.json
 .config/github-copilot/versions.json
 
 .claude/*

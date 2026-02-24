@@ -226,6 +226,10 @@ tcode() {
       delay 0.5
 
       tell application "System Events"
+        -- 入力ソースを英数に切り替え（日本語入力を防止）
+        key code 102
+        delay 0.3
+
         tell process "Ghostty"
           -- 右に分割 (⌘+D)
           keystroke "d" using {command down}

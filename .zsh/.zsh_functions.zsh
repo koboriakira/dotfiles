@@ -231,10 +231,9 @@ tcode() {
           keystroke "d" using {command down}
           delay 0.5
 
-          -- 英数に切り替えてからコマンド入力
-          key code 102
-          delay 0.2
-          keystroke "cd " & targetDir & " && lazygit"
+          -- クリップボード経由で貼り付け（入力ソースに依存しない）
+          set the clipboard to "cd " & targetDir & " && lazygit"
+          keystroke "v" using {command down}
           key code 36 -- Return
           delay 0.5
 
@@ -246,10 +245,9 @@ tcode() {
           keystroke "d" using {command down, shift down}
           delay 0.5
 
-          -- 英数に切り替えてからコマンド入力
-          key code 102
-          delay 0.2
-          keystroke "cd " & targetDir
+          -- クリップボード経由で貼り付け
+          set the clipboard to "cd " & targetDir
+          keystroke "v" using {command down}
           key code 36 -- Return
           delay 0.5
 
@@ -257,10 +255,9 @@ tcode() {
           key code 126 using {command down, control down}
           delay 0.5
 
-          -- 英数に切り替えてからコマンド入力
-          key code 102
-          delay 0.2
-          keystroke "cd " & targetDir & " && " & claudeCmd
+          -- クリップボード経由で貼り付け
+          set the clipboard to "cd " & targetDir & " && " & claudeCmd
+          keystroke "v" using {command down}
           key code 36 -- Return
         end tell
       end tell

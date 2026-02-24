@@ -37,5 +37,8 @@ split-divider-color = #7aa2f7
 focus-follows-mouse = true
 
 font-size = 18
+font-family = PlemolJP Console NF
+font-feature = -dlig
+
 
 macos-option-as-alt = left

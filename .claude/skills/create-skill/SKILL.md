@@ -3,7 +3,7 @@ name: create-skill
 description: Claude Code のスキルを作成するメタスキル。スキル作成、スラッシュコマンド作成、SKILL.md の生成を依頼されたときに使用する。
 disable-model-invocation: true
 argument-hint: "[スキル名] [概要]"
-allowed-tools: Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion
+allowed-tools: Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion, WebFetch
 ---
 
 # スキル作成メタスキル
@@ -11,6 +11,16 @@ allowed-tools: Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion
 Claude Code の Agent Skills 仕様に準拠したスキルを作成する。
 
 ## 作成フロー
+
+### 0. 公式ドキュメントの参照（必須）
+
+作成を開始する前に、必ず公式ドキュメントを WebFetch で取得し、最新の仕様を確認する。
+
+```
+WebFetch: https://docs.anthropic.com/en/docs/claude-code/skills
+```
+
+ローカルの reference.md と公式ドキュメントに差異がある場合、公式ドキュメントを優先する。
 
 ### 1. 要件の収集
 

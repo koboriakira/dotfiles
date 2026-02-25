@@ -47,25 +47,6 @@
       "Bash(dd *)"
     ]
   },
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "php-lsp@claude-plugins-official": true
-  },
-  "workflow": {
-    "autoApprove": true,
-    "confirmBeforeRun": false,
-    "maxIterations": 20,
-    "dangerousOperationsOnly": true
-  },
-  "memory": {
-    "enableAutoLoad": true,
-    "recursiveSearch": true,
-    "maxDepth": 10,
-    "defaultMemoryLocation": "user"
-  },
-  "skipDangerousModePermissionPrompt": true,
   "hooks": {
     "Notification": [
       {
@@ -97,5 +78,25 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "php-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "workflow": {
+    "autoApprove": true,
+    "confirmBeforeRun": false,
+    "maxIterations": 20,
+    "dangerousOperationsOnly": true
+  },
+  "memory": {
+    "enableAutoLoad": true,
+    "recursiveSearch": true,
+    "maxDepth": 10,
+    "defaultMemoryLocation": "user"
   }
 }

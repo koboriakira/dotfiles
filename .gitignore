@@ -17,6 +17,7 @@
 !.claude/commands/
 !.claude/agents/
 !.claude/skills/
+!.claude/rules/
 .DS_Store
 __pycache__
 

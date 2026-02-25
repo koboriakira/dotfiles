@@ -24,9 +24,6 @@
       "Bash(mkdir *)",
       "Bash(cp *)",
       "Bash(mv *)",
-      "Bash(cat *)",
-      "Bash(grep *)",
-      "Bash(find *)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:stackoverflow.com)",
       "WebFetch(domain:docs.python.org)",
@@ -44,9 +41,15 @@
       "Bash(rm -rf /*)",
       "Bash(sudo *)",
       "Bash(chmod 777 *)",
-      "Bash(dd *)"
+      "Bash(dd *)",
+      "Read(**/Pods/**)",
+      "Read(**/.claude/worktrees/**)",
+      "Read(**/DerivedData/**)",
+      "Read(**/node_modules/**)",
+      "Read(**/.build/**)"
     ]
   },
+  "model": "opus",
   "hooks": {
     "Notification": [
       {

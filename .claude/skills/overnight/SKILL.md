@@ -124,6 +124,7 @@ DELAY=$((TARGET_TS - NOW))
 echo "$(date): ${DELAY}秒後（${TARGET}）に実行開始します"
 sleep $DELAY
 echo "$(date): 実行開始"
+unset CLAUDECODE
 cd <target-repo-path> && claude -p "$(cat ~/.claude/overnight/YYYY-MM-DD_overnight-task.md)" --output-format text --allowedTools 'Bash(git:*),Bash(npm:*),Bash(cargo:*),Bash(python:*),Bash(go:*),Read,Write,Edit,Glob,Grep,mcp__github__create_pull_request,mcp__github__create_branch'
 ```
 

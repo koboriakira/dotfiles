@@ -2,33 +2,32 @@
 name: overnight
 description: Prepare a comprehensive autonomous task prompt for overnight non-interactive execution. Use when the user is about to sleep and wants to maximize Claude usage during idle hours.
 disable-model-invocation: true
-argument-hint: "[repository or 'all']"
 allowed-tools: Bash, Read, Grep, Glob, Write, Edit, AskUserQuestion, mcp__github__list_issues, mcp__github__get_issue, mcp__github__search_issues, mcp__github__get_me, mcp__github__list_pull_requests, mcp__github__search_pull_requests
 ---
 
 # Overnight Task Preparation
 
-就寝前にユーザーと対話しながら、非対話モードで実行可能な自律作業プロンプトを生成する。
+就寝前にユーザーと対話しながら、現在のリポジトリを対象に非対話モードで実行可能な自律作業プロンプトを生成する。
+
+**前提**: 現在のディレクトリが対象リポジトリのルートであること。
 
 ## 実行フロー
 
 ### 1. 現状の把握
 
-以下を並行して収集する:
+現在のリポジトリの状態を収集する:
 
-- `gh repo list --limit 30 --json name,owner,url,pushedAt --jq 'sort_by(.pushedAt) | reverse'` でアクティブなリポジトリを取得
-- 現在のディレクトリが Git リポジトリなら、そのリポジトリの状態も確認
+- `git remote -v` でリポジトリの owner/repo を特定
+- `git status` で作業ツリーの状態を確認
+- `git log --oneline -10` で最近のコミットを確認
+- CLAUDE.md やプロジェクト固有のルールを確認
 
 ### 2. イシューの収集と分析
 
-ユーザーの引数に応じてスコープを決定する:
+現在のリポジトリのオープンイシューを収集する:
 
-- `$ARGUMENTS` が特定のリポジトリ名 → そのリポジトリのイシューのみ
-- `$ARGUMENTS` が `all` または未指定 → アクティブなリポジトリ全体
-
-GitHub MCP ツールまたは `gh` コマンドでイシューを収集する:
 ```bash
-gh issue list --repo <owner>/<repo> --state open --json number,title,body,labels,assignees,createdAt --limit 20
+gh issue list --state open --json number,title,body,labels,assignees,createdAt --limit 20
 ```
 
 ### 3. イシューの実現可能性を評価
@@ -55,10 +54,10 @@ gh issue list --repo <owner>/<repo> --state open --json number,title,body,labels
 ```
 ## 候補イシュー
 
-| # | リポジトリ | イシュー | 評価 | 推定規模 | 概要 |
-|---|-----------|---------|------|---------|------|
-| 1 | repo-name | #123 タイトル | A | 小 | 説明 |
-| 2 | repo-name | #456 タイトル | B | 中 | 説明 |
+| # | イシュー | 評価 | 推定規模 | 概要 |
+|---|---------|------|---------|------|
+| 1 | #123 タイトル | A | 小 | 説明 |
+| 2 | #456 タイトル | B | 中 | 説明 |
 
 どのイシューに取り組みますか？（番号で選択、複数可）
 ```
@@ -134,8 +133,6 @@ nohup bash ~/.claude/overnight/YYYY-MM-DD_run.sh > ~/.claude/overnight/YYYY-MM-D
 ```
 
 これにより、ターミナルを閉じても指定時刻に実行が開始される。
-
-複数リポジトリにまたがる場合は、リポジトリごとに個別のプロンプトファイルとスクリプトを生成し、順次実行されるよう1つのスクリプトにまとめる。
 
 ## 注意事項
 

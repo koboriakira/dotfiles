@@ -46,10 +46,12 @@
       "Read(**/.claude/worktrees/**)",
       "Read(**/DerivedData/**)",
       "Read(**/node_modules/**)",
-      "Read(**/.build/**)"
+      "Read(**/.build/**)",
+      "Read(**/__pycache__/**)",
+      "Read(**/*.egg-info/**)",
+      "Read(**/.venv/**)"
     ]
   },
-  "model": "opus",
   "hooks": {
     "Notification": [
       {

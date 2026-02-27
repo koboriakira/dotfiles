@@ -1,6 +1,6 @@
 ---
 name: task-board
-description: Task management with Obsidian task board. Use when the user starts a new task, requests work, or asks to manage tasks. Triggers issue creation check and task board updates.
+description: Task management with Obsidian task board. Use for every task — record all work on the task board regardless of size. Optionally link to GitHub Issues when criteria are met.
 argument-hint: "[タスク名（省略可）]"
 allowed-tools: Read, Write, Edit, Bash, AskUserQuestion, mcp__github__create_issue, mcp__github__get_issue, mcp__github__list_issues, mcp__github__search_issues
 ---
@@ -21,9 +21,17 @@ $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/my-vault/Claude/task
 
 まずタスクボードを Read で読み込み、現在の状態を把握する。
 
-### ステップ2：Issue化の検討
+### ステップ2：タスクボードへの追加
 
-以下の3基準でユーザーに確認する。AskUserQuestion を使い、番号で回答できる形式にする。
+すべての作業をタスクボードに記録する。Issue の有無にかかわらず、作業を開始したら `## 🚧 In Progress` セクションに追加する。作成日を ➕ で記録する。
+
+```markdown
+- [ ] タスク名 ➕ YYYY-MM-DD
+```
+
+### ステップ3：Issue化の検討（該当する場合のみ）
+
+以下の3基準のいずれかに該当する場合、Issue化するかユーザーに確認する。該当しない場合はこのステップをスキップする。
 
 | 基準 | 内容 |
 |---|---|
@@ -31,44 +39,26 @@ $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/my-vault/Claude/task
 | システム変更 | コードやインフラ等の変更を伴うか |
 | トラッキング | 進捗をチームで追跡する必要があるか |
 
-質問例:
-```
-このタスクについて:
-1. Issue化する（チーム共有・コード変更・進捗追跡のいずれかに該当）
-2. Issue化しない（セッション記録のみ）
-```
-
-いずれか1つでも該当する場合はIssue化を推奨する。推奨理由も簡潔に伝える。
-
-### ステップ3：タスクボードへの追加
-
-#### Issue化する場合
+Issue化する場合:
 
 1. GitHub Issue を作成する（mcp__github__create_issue を使用）
-2. タスクボードの `## 🚧 In Progress` セクションにリンク付きで追加する
+2. タスクボードのタスクにリンクを追加する
 
 ```markdown
 - [ ] [#番号](https://github.com/org/repo/issues/番号) タスク名
-```
-
-#### Issue化しない場合
-
-タスクボードの `## 🚧 In Progress` セクションにセッションURLなしで追加する（セッションURL は作業完了時に付与）。
-
-```markdown
-- [ ] タスク名
 ```
 
 ### ステップ4：作業完了時
 
 タスクが完了したら:
 
-1. タスクボードのタスクにチェックを入れる（`- [ ]` → `- [x]`）
+1. タスクにチェックを入れ、完了日を ✅ で記録する
 2. Issue化しなかったタスクにはセッションURLを付与する（`[session](https://claude.ai/chat/${CLAUDE_SESSION_ID})`）
-3. `updated` フロントマターを更新する
+3. タスクを `## 🚧 In Progress` から `## ✅ Done` セクション内のアーカイブ領域（クエリブロックの下）に移動する
+4. `updated` フロントマターを更新する
 
 ```markdown
-- [x] タスク名 [session](https://claude.ai/chat/xxxx)
+- [x] タスク名 [session](https://claude.ai/chat/xxxx) ➕ 2026-02-27 ✅ 2026-02-27
 ```
 
 ## タスクの記法
@@ -91,7 +81,7 @@ $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/my-vault/Claude/task
 | 🚧 In Progress | 現在作業中のタスク |
 | 📋 Todo | 未着手のタスク |
 | 🚫 Blocked | ブロックされているタスク |
-| ✅ Done | Tasks プラグインのクエリで自動表示 |
+| ✅ Done | 完了タスクのアーカイブ。クエリブロック＋その下にアーカイブ行 |
 
 ## 注意事項
 

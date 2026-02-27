@@ -164,6 +164,26 @@ function slack-post() {
     }' > /dev/null
 }
 
+# 通知チャンネルに投稿する
+function slack-notify() {
+  if [ $# -ne 1 ]; then
+    echo "Usage: slack-notify <message>"
+    return 1
+  fi
+
+  local authorization="Bearer $SLACK_BOT_TOKEN"
+  local channel=C04Q3AV4TA5 # 通知チャンネル
+  local message=$1
+
+  curl -sS --location 'https://slack.com/api/chat.postMessage' \
+    --header "Authorization: $authorization" \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "channel": "'$channel'",
+        "text": "'$message'"
+    }' > /dev/null
+}
+
 # 指定したポートを使用しているプロセスを終了する
 kill_port() {
     local port=$1

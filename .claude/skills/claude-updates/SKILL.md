@@ -1,5 +1,5 @@
 ---
-name: rss-check
+name: claude-updates
 description: Fetch and analyze Claude/Anthropic RSS feeds to summarize recent updates and propose improvements to CLAUDE.md, skills, and workflows.
 disable-model-invocation: true
 user-invocable: true

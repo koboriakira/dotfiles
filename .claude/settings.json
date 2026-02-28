@@ -88,6 +88,7 @@
     ]
   },
   "enabledPlugins": {},
+  "language": "Japanese",
   "skipDangerousModePermissionPrompt": true,
   "workflow": {
     "autoApprove": true,

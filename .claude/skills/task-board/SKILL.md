@@ -53,7 +53,7 @@ Issue化する場合:
 タスクが完了したら:
 
 1. タスクにチェックを入れ、完了日を ✅ で記録する
-2. Issue化しなかったタスクにはセッションURLを付与する（`[session](https://claude.ai/chat/${CLAUDE_SESSION_ID})`）
+2. Claude Code で作業した場合、Issue化しなかったタスクにはセッションURLを付与する（`[session](https://claude.ai/chat/${CLAUDE_SESSION_ID})`）。他ツール（GitHub Copilot Agent 等）で作業した場合はセッションURLなしでよい
 3. タスクを `## 🚧 In Progress` から `## ✅ Done` セクション内のアーカイブ領域（クエリブロックの下）に移動する
 4. `updated` フロントマターを更新する
 

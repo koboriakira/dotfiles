@@ -220,7 +220,7 @@ ssh() {
   TERM=xterm-256color command ssh "$@"
 }
 
-# Ghostty で Claude Code + lazygit + Terminal の3ペインレイアウトを展開する
+# Ghostty で Claude Code + Terminal の左右2ペインレイアウトを展開する
 tcode() {
   local dir="$PWD"
   local claude_cmd="claude"
@@ -251,22 +251,8 @@ tcode() {
           keystroke "d" using {command down}
           delay 0.5
 
-          -- 右ペインを下に分割 (⌘+Shift+D) → 右下ペインにフォーカスが移る
-          keystroke "d" using {command down, shift down}
-          delay 0.5
-
-          -- 右下ペインに Terminal (cd のみ)
+          -- 右ペインに Terminal (cd のみ)
           set the clipboard to "cd " & targetDir
-          keystroke "v" using {command down}
-          key code 36 -- Return
-          delay 0.5
-
-          -- 右上ペインにフォーカス (⌘+Ctrl+↑)
-          key code 126 using {command down, control down}
-          delay 0.5
-
-          -- 右上ペインに lazygit
-          set the clipboard to "cd " & targetDir & " && lazygit"
           keystroke "v" using {command down}
           key code 36 -- Return
           delay 0.5

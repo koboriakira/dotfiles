@@ -49,7 +49,10 @@
       "Read(**/.build/**)",
       "Read(**/__pycache__/**)",
       "Read(**/*.egg-info/**)",
-      "Read(**/.venv/**)"
+      "Read(**/.venv/**)",
+      "Read(**/.next/**)",
+      "Read(**/out/**)",
+      "Read(**/dist/**)"
     ]
   },
   "hooks": {

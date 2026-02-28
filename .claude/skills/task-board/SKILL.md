@@ -23,10 +23,10 @@ $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/my-vault/Claude/task
 
 ### ステップ2：タスクボードへの追加
 
-すべての作業をタスクボードに記録する。Issue の有無にかかわらず、作業を開始したら `## 🚧 In Progress` セクションに追加する。作成日を ➕ で記録する。
+すべての作業をタスクボードに記録する。Issue の有無にかかわらず、作業を開始したら `## 🚧 In Progress` セクションに追加する。作成日を ➕ で、端末ユーザー名を 🖥 で記録する。端末ユーザー名は `whoami` コマンドで取得する。
 
 ```markdown
-- [ ] タスク名 ➕ YYYY-MM-DD
+- [ ] タスク名 🖥 ユーザー名 ➕ YYYY-MM-DD
 ```
 
 ### ステップ3：Issue化の検討（該当する場合のみ）
@@ -58,10 +58,14 @@ Issue化する場合:
 4. `updated` フロントマターを更新する
 
 ```markdown
-- [x] タスク名 [session](https://claude.ai/chat/xxxx) ➕ 2026-02-27 ✅ 2026-02-27
+- [x] タスク名 [session](https://claude.ai/chat/xxxx) 🖥 ユーザー名 ➕ 2026-02-27 ✅ 2026-02-27
 ```
 
 ## タスクの記法
+
+### 端末識別
+
+タスクには作業を行った端末のユーザー名を 🖥 で記録する。`whoami` コマンドの出力をそのまま使用する。
 
 ### 優先度・期日（Tasks プラグイン対応）
 
@@ -69,6 +73,7 @@ Issue化する場合:
 
 | 絵文字 | 意味 |
 |---|---|
+| 🖥 | 端末ユーザー名（🖥 koboriakira など。`whoami` で取得） |
 | 📅 | 期日（📅 YYYY-MM-DD） |
 | ⏫ | 優先度：最高 |
 | 🔼 | 優先度：高 |

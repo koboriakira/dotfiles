@@ -63,6 +63,20 @@ Issue化する場合:
 
 ## タスクの記法
 
+### 外部チケットリンク
+
+GitHub Issue 以外のチケット管理サービス（Jira、Linear、Asana、Backlog 等）のURLがある場合、🔗 でタスクに記録する。リンクテキストはチケットIDや短い識別名にする。
+
+```markdown
+- [ ] タスク名 🔗 [PROJ-123](https://example.atlassian.net/browse/PROJ-123)
+```
+
+GitHub Issue リンクと併用も可能:
+
+```markdown
+- [ ] [#番号](https://github.com/org/repo/issues/番号) タスク名 🔗 [PROJ-123](https://example.atlassian.net/browse/PROJ-123)
+```
+
 ### 端末識別
 
 タスクには作業を行った端末のユーザー名を 🖥 で記録する。`whoami` コマンドの出力をそのまま使用する。
@@ -73,6 +87,7 @@ Issue化する場合:
 
 | 絵文字 | 意味 |
 |---|---|
+| 🔗 | 外部チケットURL（🔗 [PROJ-123](URL)） |
 | 🖥 | 端末ユーザー名（🖥 koboriakira など。`whoami` で取得） |
 | 📅 | 期日（📅 YYYY-MM-DD） |
 | ⏫ | 優先度：最高 |

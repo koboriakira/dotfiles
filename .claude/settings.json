@@ -87,7 +87,10 @@
       }
     ]
   },
-  "enabledPlugins": {},
+  "enabledPlugins": {
+    "example-skills@anthropic-agent-skills": true,
+    "document-skills@anthropic-agent-skills": true
+  },
   "language": "Japanese",
   "skipDangerousModePermissionPrompt": true,
   "workflow": {

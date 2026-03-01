@@ -257,8 +257,8 @@ tcode() {
           key code 36 -- Return
           delay 0.5
 
-          -- 左ペインにフォーカス (⌘+Ctrl+←)
-          key code 123 using {command down, control down}
+          -- 左ペインにフォーカス (Ctrl+H)
+          keystroke "h" using {control down}
           delay 0.5
 
           -- 左ペインに Claude Code

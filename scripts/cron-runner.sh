@@ -15,7 +15,6 @@ set -euo pipefail
 #   -c, --channel <ID>     Slack通知先チャンネル（デフォルト: $SLACK_CHANNEL or C04Q3AV4TA5）
 #   -l, --log <FILE>       ログファイルのパス（デフォルト: /tmp/cron-runner-<name>.log）
 #   --name <NAME>          ジョブ名（ログ・通知用）
-#   --unset-api-key        ANTHROPIC_API_KEYをunset（Max利用時）
 # =============================================================================
 
 # --- PATH拡張 ---
@@ -29,7 +28,6 @@ NOTIFY=false
 CHANNEL="${SLACK_CHANNEL:-C04Q3AV4TA5}"
 LOG_FILE=""
 JOB_NAME=""
-UNSET_API_KEY=false
 
 # --- usage ---
 usage() {
@@ -55,8 +53,6 @@ while [[ $# -gt 0 ]]; do
       LOG_FILE="$2"; shift 2 ;;
     --name)
       JOB_NAME="$2"; shift 2 ;;
-    --unset-api-key)
-      UNSET_API_KEY=true; shift ;;
     --)
       shift; COMMAND=("$@"); break ;;
     -h|--help)
@@ -103,10 +99,8 @@ if [[ "$NO_ENV" == false ]]; then
   fi
 fi
 
-# --- ANTHROPIC_API_KEY unset ---
-if [[ "$UNSET_API_KEY" == true ]]; then
-  unset ANTHROPIC_API_KEY 2>/dev/null || true
-fi
+# --- ANTHROPIC_API_KEY unset（常にunset。Max利用を前提）---
+unset ANTHROPIC_API_KEY 2>/dev/null || true
 
 # --- Slack通知関数 ---
 slack_notify() {

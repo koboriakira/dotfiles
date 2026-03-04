@@ -1,12 +1,12 @@
 ---
-name: cron-setup
+name: schedule-job
 description: Set up scheduled jobs using cron or launchd. Use when adding any scheduled task. Determines the right scheduler (cron vs launchd), constructs the entry, and verifies execution.
 disable-model-invocation: true
 argument-hint: "[タスク概要]"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion
 ---
 
-# cron-setup
+# schedule-job
 
 スケジュールジョブを cron または launchd（LaunchAgents）で設定する。
 

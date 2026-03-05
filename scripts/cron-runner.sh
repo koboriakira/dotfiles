@@ -15,6 +15,7 @@ set -euo pipefail
 #   -c, --channel <ID>     Slack通知先チャンネル（デフォルト: $SLACK_CHANNEL or C04Q3AV4TA5）
 #   -l, --log <FILE>       ログファイルのパス（デフォルト: /tmp/cron-runner-<name>.log）
 #   --name <NAME>          ジョブ名（ログ・通知用）
+#   -t, --timeout <SECS>   タイムアウト秒数（超過でSIGTERM→SIGKILL、exit 124）
 # =============================================================================
 
 # --- PATH拡張 ---
@@ -28,6 +29,7 @@ NOTIFY=false
 CHANNEL="${SLACK_CHANNEL:-C04Q3AV4TA5}"
 LOG_FILE=""
 JOB_NAME=""
+TIMEOUT=""
 
 # --- usage ---
 usage() {
@@ -53,6 +55,8 @@ while [[ $# -gt 0 ]]; do
       LOG_FILE="$2"; shift 2 ;;
     --name)
       JOB_NAME="$2"; shift 2 ;;
+    -t|--timeout)
+      TIMEOUT="$2"; shift 2 ;;
     --)
       shift; COMMAND=("$@"); break ;;
     -h|--help)
@@ -132,7 +136,23 @@ start_time=$(date +%s)
 exit_code=0
 
 # コマンド実行（stdout/stderrをログにも流す）
-"${COMMAND[@]}" >> "$LOG_FILE" 2>&1 || exit_code=$?
+if [[ -n "$TIMEOUT" ]]; then
+  "${COMMAND[@]}" >> "$LOG_FILE" 2>&1 &
+  cmd_pid=$!
+  ( sleep "$TIMEOUT" && kill -TERM "$cmd_pid" 2>/dev/null && sleep 5 && kill -KILL "$cmd_pid" 2>/dev/null ) &
+  watchdog_pid=$!
+  wait "$cmd_pid" 2>/dev/null || exit_code=$?
+  # watchdog を停止（コマンドが先に終了した場合）
+  kill "$watchdog_pid" 2>/dev/null
+  wait "$watchdog_pid" 2>/dev/null || true
+  # SIGTERM (143) で終了した場合はタイムアウトとみなす
+  if [[ $exit_code -eq 143 ]]; then
+    exit_code=124
+    log "TIMEOUT: command killed after ${TIMEOUT}s"
+  fi
+else
+  "${COMMAND[@]}" >> "$LOG_FILE" 2>&1 || exit_code=$?
+fi
 
 end_time=$(date +%s)
 duration=$(( end_time - start_time ))

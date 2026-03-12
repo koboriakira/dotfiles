@@ -46,5 +46,8 @@ vim.api.nvim_create_user_command('Pytest', function(opts)
   vim.cmd('copen')
 end, { nargs = '*' })
 
+-- yankが自動的にシステムクリップボードにも入るようにする
+vim.opt.clipboard = "unnamedplus"
+
 require "lazy_setup"
 require "polish"

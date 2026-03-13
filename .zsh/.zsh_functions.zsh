@@ -165,15 +165,16 @@ function slack-post() {
 }
 
 # 通知チャンネルに投稿する
+# Usage: slack-notify <message> [channel_id]
 function slack-notify() {
-  if [ $# -ne 1 ]; then
-    echo "Usage: slack-notify <message>"
+  if [ $# -lt 1 ]; then
+    echo "Usage: slack-notify <message> [channel_id]"
     return 1
   fi
 
   local authorization="Bearer $SLACK_BOT_TOKEN"
-  local channel=C04Q3AV4TA5 # 通知チャンネル
   local message=$1
+  local channel=${2:-C04Q3AV4TA5} # デフォルト: 通知チャンネル
 
   curl -sS --location 'https://slack.com/api/chat.postMessage' \
     --header "Authorization: $authorization" \
@@ -182,6 +183,81 @@ function slack-notify() {
         "channel": "'$channel'",
         "text": "'$message'"
     }' > /dev/null
+}
+
+# ローカルの画像ファイルをSlackにアップロードする
+# Usage: slack-upload-image <file_path> [channel_id] [comment]
+# channel_idのデフォルト: diaryチャンネル (C05F6AASERZ)
+function slack-upload-image() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: slack-upload-image <file_path> [channel_id] [comment]"
+    return 1
+  fi
+
+  local file_path=$1
+  local channel=${2:-C05F6AASERZ}
+  local comment=${3:-""}
+
+  if [ ! -f "$file_path" ]; then
+    echo "ファイルが見つかりません: $file_path"
+    return 1
+  fi
+
+  local fname
+  fname=$(basename "$file_path")
+  local fsize
+  fsize=$(wc -c < "$file_path" | tr -d ' ')
+
+  # Step 1: アップロードURL取得
+  local url_response
+  url_response=$(curl -sS \
+    -X POST \
+    -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+    -d "filename=${fname}&length=${fsize}" \
+    https://slack.com/api/files.getUploadURLExternal)
+
+  local upload_url file_id
+  upload_url=$(echo "$url_response" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('upload_url',''))" 2>/dev/null)
+  file_id=$(echo "$url_response" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('file_id',''))" 2>/dev/null)
+
+  if [ -z "$upload_url" ] || [ -z "$file_id" ]; then
+    local error
+    error=$(echo "$url_response" | python3 -c "import sys,json; print(json.load(sys.stdin).get('error','unknown'))" 2>/dev/null)
+    echo "アップロードURL取得失敗: $error"
+    return 1
+  fi
+
+  # Step 2: ファイルをアップロード
+  local upload_status
+  upload_status=$(curl -sS -o /dev/null -w "%{http_code}" \
+    -F "file=@${file_path}" \
+    "$upload_url")
+
+  if [ "$upload_status" != "200" ]; then
+    echo "ファイルアップロード失敗: HTTP $upload_status"
+    return 1
+  fi
+
+  # Step 3: アップロード完了・チャンネルに投稿
+  local complete_response
+  complete_response=$(curl -sS \
+    -X POST \
+    -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d "{\"files\":[{\"id\":\"${file_id}\"}],\"channel_id\":\"${channel}\",\"initial_comment\":\"${comment}\"}" \
+    https://slack.com/api/files.completeUploadExternal)
+
+  local ok
+  ok=$(echo "$complete_response" | python3 -c "import sys,json; print(json.load(sys.stdin).get('ok','false'))" 2>/dev/null)
+
+  if [ "$ok" = "True" ]; then
+    echo "アップロード完了: $file_path"
+  else
+    local error
+    error=$(echo "$complete_response" | python3 -c "import sys,json; print(json.load(sys.stdin).get('error','unknown'))" 2>/dev/null)
+    echo "アップロード失敗: $error"
+    return 1
+  fi
 }
 
 # 指定したポートを使用しているプロセスを終了する

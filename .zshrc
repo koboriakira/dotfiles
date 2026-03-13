@@ -30,7 +30,7 @@ eval "$(starship init zsh)"
 # fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/a_kobori/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/a_kobori/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/koboriakira/.dotfiles/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/koboriakira/.dotfiles/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/a_kobori/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/a_kobori/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/koboriakira/.dotfiles/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/koboriakira/.dotfiles/google-cloud-sdk/completion.zsh.inc'; fi
